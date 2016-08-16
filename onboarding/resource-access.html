@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Resource Access Guide &mdash; BDEEP Documentation 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BDEEP Documentation 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Onboarding Guide" href="index.html"/>
+        <link rel="next" title="Provisioning Credentials" href="provisioningcredentials.html"/>
+        <link rel="prev" title="Onboarding Guide" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BDEEP Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../projects/index.html">Projects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Onboarding Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Resource Access Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-share">Network Share</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#connect-to-the-uiuc-vpn">Connect to the UIUC VPN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mount-the-share-on-windows">Mount the share on Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mount-the-share-on-mac-osx">Mount the share on Mac (OSX)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mount-the-share-on-linux">Mount the share on Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#secure-shell-ssh">Secure Shell (SSH)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rstudio">RStudio</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="provisioningcredentials.html">Provisioning Credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">BDEEP Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Onboarding Guide</a> &raquo;</li>
+      
+    <li>Resource Access Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/onboarding/resource-access.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="resource-access-guide">
+<h1><a class="toc-backref" href="#id1">Resource Access Guide</a><a class="headerlink" href="#resource-access-guide" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#resource-access-guide" id="id1">Resource Access Guide</a><ul>
+<li><a class="reference internal" href="#overview" id="id2">Overview</a></li>
+<li><a class="reference internal" href="#network-share" id="id3">Network Share</a><ul>
+<li><a class="reference internal" href="#connect-to-the-uiuc-vpn" id="id4">Connect to the UIUC VPN</a></li>
+<li><a class="reference internal" href="#mount-the-share-on-windows" id="id5">Mount the share on Windows</a></li>
+<li><a class="reference internal" href="#mount-the-share-on-mac-osx" id="id6">Mount the share on Mac (OSX)</a></li>
+<li><a class="reference internal" href="#mount-the-share-on-linux" id="id7">Mount the share on Linux</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#secure-shell-ssh" id="id8">Secure Shell (SSH)</a></li>
+<li><a class="reference internal" href="#rstudio" id="id9">RStudio</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id2">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>BDEEP has a number of resources that researchers may need to access. This
+document is intended to help people get people started.</p>
+<p>In order to access our systems, you will need to obtain certain credentials. If
+these haven&#8217;t been given to you, please ask for them. Here is a breakdown of
+what will be given to you. Hopefully this clears up any confusion.</p>
+</div>
+<div class="section" id="network-share">
+<h2><a class="toc-backref" href="#id3">Network Share</a><a class="headerlink" href="#network-share" title="Permalink to this headline">¶</a></h2>
+<p>Accessing the network share is probably one of the first things you&#8217;ll need to
+do. All of our files are located here so that everyone can collaboratively work
+on them. The network share is a directory you mount on your local machine. The
+idea is that everyone will work in the same location and be able to share files more
+easily this way. If you are a developer, you may need to mount the network share
+to the machine running a program in order to read and write from and to our
+team&#8217;s files.</p>
+<div class="section" id="connect-to-the-uiuc-vpn">
+<h3><a class="toc-backref" href="#id4">Connect to the UIUC VPN</a><a class="headerlink" href="#connect-to-the-uiuc-vpn" title="Permalink to this headline">¶</a></h3>
+<p>In order to get access to our resources, you must be on the UIUC VPN. To get
+access, follow the University&#8217;s <a class="reference external" href="https://techservices.illinois.edu/services/virtual-private-networking-vpn/download-and-set-up-the-vpn-client">guide</a>.</p>
+</div>
+<div class="section" id="mount-the-share-on-windows">
+<h3><a class="toc-backref" href="#id5">Mount the share on Windows</a><a class="headerlink" href="#mount-the-share-on-windows" title="Permalink to this headline">¶</a></h3>
+<p>On windows, you may either view or mount the share on your local machine. To
+view the share, simply open the file explorer and in the URL bar at the top,
+type <code class="code docutils literal"><span class="pre">\\141.142.209.255\share</span></code>. When prompted for credentials, enter in the
+username and password given to you by the team&#8217;s Systems Administrator. You
+should now be able to access the files.</p>
+<p>You may also mount the network share on your machine by going to <code class="code docutils literal"><span class="pre">File</span> <span class="pre">Explorer</span>
+<span class="pre">&gt;</span> <span class="pre">Network</span></code>, right clicking and adding a network location.</p>
+</div>
+<div class="section" id="mount-the-share-on-mac-osx">
+<h3><a class="toc-backref" href="#id6">Mount the share on Mac (OSX)</a><a class="headerlink" href="#mount-the-share-on-mac-osx" title="Permalink to this headline">¶</a></h3>
+<p>On OSX, we can add the share through <code class="code docutils literal"><span class="pre">Finder</span> <span class="pre">&gt;</span> <span class="pre">Go</span> <span class="pre">&gt;</span> <span class="pre">Connect</span> <span class="pre">to</span> <span class="pre">Server</span></code>.
+Use the address <code class="code docutils literal"><span class="pre">smb://username&#64;141.142.209.255/share</span></code>.</p>
+</div>
+<div class="section" id="mount-the-share-on-linux">
+<h3><a class="toc-backref" href="#id7">Mount the share on Linux</a><a class="headerlink" href="#mount-the-share-on-linux" title="Permalink to this headline">¶</a></h3>
+<p>On Linux, most file explorers will have the option to add a network location.
+Use the address <code class="code docutils literal"><span class="pre">smb://username&#64;141.142.209.255/share</span></code>.</p>
+</div>
+</div>
+<div class="section" id="secure-shell-ssh">
+<h2><a class="toc-backref" href="#id8">Secure Shell (SSH)</a><a class="headerlink" href="#secure-shell-ssh" title="Permalink to this headline">¶</a></h2>
+<p>SSH will be necessary if you need shell access to a VM. First, you must obtain
+a private key and a username from the Systems Administrator. Once you have your
+credentials, you will be able to access the machine on Mac (OSX) and Linux via
+the terminal. Make sure you&#8217;re on the VPN. Open up Terminal and enter</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ ssh -i /path/to/key.pem username@ipaddress
+</pre></div>
+</div>
+<p>You should now be able to access the machine.</p>
+</div>
+<div class="section" id="rstudio">
+<h2><a class="toc-backref" href="#id9">RStudio</a><a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a></h2>
+<p>If you would like to use RStudio, you may either use it in the browser by
+logging into <a class="reference external" href="http://141.142.210.5/">http://141.142.210.5/</a> or you may mount the network share on your
+machine and use your locally downloaded RStudio as if you were accessing your
+local filesystem.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="provisioningcredentials.html" class="btn btn-neutral float-right" title="Provisioning Credentials" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Onboarding Guide" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, BDEEP.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Infrastructure &mdash; BDEEP Documentation 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BDEEP Documentation 0.1 documentation" href="../index.html"/>
+        <link rel="next" title="BDEEP Infrastructure Handbook" href="handbook.html"/>
+        <link rel="prev" title="Provisioning Credentials" href="../onboarding/provisioningcredentials.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BDEEP Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../projects/index.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../onboarding/index.html">Onboarding Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Infrastructure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="handbook.html">BDEEP Infrastructure Handbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html">Joining a VM to the Active Directory Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html">Installing RStudioServer on Ubuntu 15.04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/index.html">Documentation Guide</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">BDEEP Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Infrastructure</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/infrastructure/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="infrastructure">
+<h1>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="handbook.html">BDEEP Infrastructure Handbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="handbook.html#overview-of-bdeep-infrastructure">Overview of BDEEP Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handbook.html#nebula">Nebula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handbook.html#provisioning-virtual-machines-vm">Provisioning Virtual Machines (VM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handbook.html#security-groups">Security Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handbook.html#keypairs">KeyPairs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handbook.html#a-note-about-security">A Note About Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handbook.html#docker">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handbook.html#network-share-active-directory">Network Share/Active Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handbook.html#rstudio-server">RStudio Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handbook.html#offsite-backups">Offsite Backups</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ad-join.html">Joining a VM to the Active Directory Domain</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html#launch-ubuntu-15-04-instance">Launch Ubuntu 15.04 instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html#ssh-into-the-machine-gain-root-access">SSH into the Machine. Gain root access.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html#update-and-install-packages">Update and Install Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html#updating-samba-config">Updating Samba Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html#update-hosts-file">Update hosts file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html#obtain-kerberos-ticket">Obtain Kerberos Ticket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html#join-domain">Join Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html#integrate-authentication">Integrate Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html#mount-network-share-in-user-s-home-directory-optional">Mount network share in user&#8217;s home directory (OPTIONAL)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html#enjoy">Enjoy!</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Installing RStudioServer on Ubuntu 15.04</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html#installing-an-up-to-date-version-of-r">Installing an up-to-date version of R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html#install-rstudioserver">Install RStudioServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html#configure-rstudioserver">Configure RStudioServer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/index.html">Documentation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/documentation.html">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/documentation_sample.html">This is an example of a page!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/sphinx-test/docs/index.html">sphinx-test&#8217;s documentation!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/sphinx-test/docs/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="handbook.html" class="btn btn-neutral float-right" title="BDEEP Infrastructure Handbook" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../onboarding/provisioningcredentials.html" class="btn btn-neutral" title="Provisioning Credentials" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, BDEEP.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+Resource Access Guide
+---------------------
+
+.. contents:: Table of Contents
+
+--------
+Overview
+--------
+
+BDEEP has a number of resources that researchers may need to access. This
+document is intended to help people get people started.
+
+In order to access our systems, you will need to obtain certain credentials. If
+these haven't been given to you, please ask for them. Here is a breakdown of
+what will be given to you. Hopefully this clears up any confusion.
+
+-------------
+Network Share
+-------------
+
+Accessing the network share is probably one of the first things you'll need to
+do. All of our files are located here so that everyone can collaboratively work
+on them. The network share is a directory you mount on your local machine. The
+idea is that everyone will work in the same location and be able to share files more
+easily this way. If you are a developer, you may need to mount the network share
+to the machine running a program in order to read and write from and to our
+team's files.
+
+Connect to the UIUC VPN
+=======================
+
+In order to get access to our resources, you must be on the UIUC VPN. To get
+access, follow the University's `guide`_.
+
+.. _guide: https://techservices.illinois.edu/services/virtual-private-networking-vpn/download-and-set-up-the-vpn-client
+
+Mount the share on Windows
+==========================
+
+On windows, you may either view or mount the share on your local machine. To
+view the share, simply open the file explorer and in the URL bar at the top,
+type :code:`\\141.142.209.255\share`. When prompted for credentials, enter in the
+username and password given to you by the team's Systems Administrator. You
+should now be able to access the files.
+
+You may also mount the network share on your machine by going to :code:`File Explorer
+> Network`, right clicking and adding a network location.
+
+Mount the share on Mac (OSX)
+============================
+
+On OSX, we can add the share through :code:`Finder > Go > Connect to Server`.
+Use the address :code:`smb://username@141.142.209.255/share`.
+
+Mount the share on Linux
+========================
+
+On Linux, most file explorers will have the option to add a network location.
+Use the address :code:`smb://username@141.142.209.255/share`.
+
+------------------
+Secure Shell (SSH)
+------------------
+
+SSH will be necessary if you need shell access to a VM. First, you must obtain
+a private key and a username from the Systems Administrator. Once you have your
+credentials, you will be able to access the machine on Mac (OSX) and Linux via
+the terminal. Make sure you're on the VPN. Open up Terminal and enter
+
+.. code::
+
+  $ ssh -i /path/to/key.pem username@ipaddress
+
+You should now be able to access the machine.
+
+-------
+RStudio
+-------
+
+If you would like to use RStudio, you may either use it in the browser by
+logging into http://141.142.210.5/ or you may mount the network share on your
+machine and use your locally downloaded RStudio as if you were accessing your
+local filesystem.

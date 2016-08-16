@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Zillow Flint Project &mdash; BDEEP Documentation 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BDEEP Documentation 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Projects" href="index.html"/>
+        <link rel="next" title="Air Pollution" href="airpollution.html"/>
+        <link rel="prev" title="Projects" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BDEEP Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Projects</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Zillow Flint Project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">1. Overview:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#project-pipeline">2. Project Pipeline:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hadoop-step-by-step-guide-point-to-point-operation">3. Hadoop Step by Step Guide (Point-to-Point Operation):</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="airpollution.html">Air Pollution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apartments.html">Apartments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="congestion.html">Congestion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flint.html">Flint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ridership.html">RiderShip</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../onboarding/index.html">Onboarding Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">BDEEP Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Projects</a> &raquo;</li>
+      
+    <li>Zillow Flint Project</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/projects/zillow.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="zillow-flint-project">
+<h1>Zillow Flint Project<a class="headerlink" href="#zillow-flint-project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>1. Overview:<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p><strong>Zillow</strong>:</p>
+<p>Zillow is a famous real estate company who would like to share their real-estate data to all the researchers and analyzers. They provided all properties and transactions with their database, along with their online API service for house search. For this project, we are using the Zillow Database they provided to us as “.txt” format files. For more details, feel free to visit Zillow website: <a class="reference external" href="http://www.zillow.com/">http://www.zillow.com/</a></p>
+<p><strong>Flint Water Crisis</strong>:</p>
+<p>Flint Water Crisis is a drinking water contamination issue in Flint Michigan. It started in April 2014, after changing the water source from treated Detroit Water and Sewerage Department water. The most lethal mater in this case is the Lead, from aging pipes to leach into the water supply. In our research, we are trying to discover how much the issue effect on the housing price by comparing the similar houses with different water supply. In this way, we are able to find out how much money people are willing to buy for the safer water.</p>
+<p><strong>Roger Hadoop Parallel Computing</strong>:</p>
+<p>Since the data involved in this project is really large, it is impossible for a regular computer to run some geographical operations. Luckily, our group is located near GIS (Geographic Information System) group for NCSA. For this project, we are closely associated with the GIS group and used their Hadoop system on the Roger Super Computer, details can be seen at: <a class="reference external" href="https://wiki.ncsa.illinois.edu/display/ROGER/ROGER+User+Guide">https://wiki.ncsa.illinois.edu/display/ROGER/ROGER+User+Guide</a></p>
+<p><strong>Hadoop System</strong>:</p>
+<p>Hadoop System, also called Apache Hadoop, is an open source software framework system for distributed storage and distributed processing of very large data sets on computer clusters built from commodity hardware. The system can run large file operation in a very short time. Our Flint project benefits from this system for a huge speed improvements. For details on Hadoop System, visit:  <a class="reference external" href="http://hadoop.apache.org/">http://hadoop.apache.org/</a></p>
+</div>
+<div class="section" id="project-pipeline">
+<h2>2. Project Pipeline:<a class="headerlink" href="#project-pipeline" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/zillow_project_pipeline.png" id="id1" src="../_images/zillow_project_pipeline.png" />
+<p><strong>Zillow Database Section</strong>:</p>
+<p>The Database is in format of “.txt” (for example Main.txt), and are located under shared drive with path <code class="code docutils literal"><span class="pre">project/Flint/stores/</span></code>. They are divided into two databases, Zillow Assessment (<cite>ZAsmt</cite> folder) and Zillow Transaction (<cite>ZTrans</cite>).</p>
+<p>The Zillow Assessment database is in folder “ZAsmt”. It includes information of each house information, such as FIPS, RowID, YearBuilt, etc. When we extracting house information, we generatlly are gathering data from this database. Frequently used table files: Main.txt, Building.txt, BuildingArea.txt.</p>
+<p>The Zillow Transaction database is in folder “ZTrans”. It includes information related to the transactions of houses, such as: RecordingDates, TransID, etc. When we are going to have all the records of the transaction of the houses, we will need to get information from this database. Frequently used table files: Main.txt, PropertyInfo.txt</p>
+<p>After we extract the information from two database, we will need to merge two database information. We will be using a field called <code class="code docutils literal"><span class="pre">ImportParcelID</span></code> field to merge them together. The <code class="code docutils literal"><span class="pre">ImportParcelID</span></code> field is located in <code class="code docutils literal"><span class="pre">ZTrans/PropertyInfo.txt</span></code> and <code class="code docutils literal"><span class="pre">ZAsmt/Main.txt</span></code>. (In order to merging the transactions, we will need to merge the <code class="code docutils literal"><span class="pre">ZTrans/PropertyInfo.txt</span></code> and <code class="code docutils literal"><span class="pre">ZTrans/Main.txt</span></code>).</p>
+<p><strong>Re-Projection</strong>:</p>
+<p>After we extracted information from ZillowDatabase, we will have a result file with CSV format. But the location on Zillow Database are Longitude and Latitude, we will need to use QGIS to transform them into UTM (Universal Transverse Mercator coordinate system) with “EPSG-2898” to match the projection with the pipe test.</p>
+<p>Later, for automatic usage, we will be using the ogr module in python to implement this projection step. Details see: <a class="reference external" href="https://pcjericks.github.io/py-gdalogr-cookbook/">https://pcjericks.github.io/py-gdalogr-cookbook/</a></p>
+<p><strong>GIS Calculation</strong>:</p>
+<p>Next step we will need to do is find the houses that is close on the edge, in order solve that problem, we decided to use the point to point approach integrated with Hadoop System. Let’s restate our final goal, which is finding how much money people are willing to pay for avoiding the water crisis for Flint. Therefore, it is clear finding the houses/transactions that on the edge of Flint city on both inside of Flint and outside of Flint will be optimal. In order to find those houses, we will be using following steps:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Divide the points set into two sets, one is inside of Flint, one is outside of Flint</li>
+<li>Find the nearest neighbor of all houses/transactions from outside of Flint to inside of Flint</li>
+<li>Find the nearest neighbor of all houses/transactions from inside of Flint to outside of Flint</li>
+<li>Create threshold to eliminate the houses/transactions that is too far away from Flint or too close to the Downtown of Flint.</li>
+</ol>
+</div></blockquote>
+<img alt="../_images/zillow_shp.png" id="shapefile" src="../_images/zillow_shp.png" />
+<p>For detailed guide for Hadoop usage, please go down for the “Hadoop Step by Step Guide”.</p>
+<p><strong>Using R Script for Economic Process</strong>:</p>
+<p>Then the last step for the pipeline is to use R script to analyze the data into economic valuable tables, and be prepared for visualization, documentation on Latex, or any future usage on economic models.</p>
+</div>
+<div class="section" id="hadoop-step-by-step-guide-point-to-point-operation">
+<h2>3. Hadoop Step by Step Guide (Point-to-Point Operation):<a class="headerlink" href="#hadoop-step-by-step-guide-point-to-point-operation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Uploading all the required files to the VM:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>using ssh enter the Roger VM (Virtual Machine)</li>
+<li>upload chicago_app.zip, unzip it into “chicago_app” folder</li>
+<li>upload the csv file contains houses/transactions in Flint, name it inFlint.csv</li>
+<li>upload the csv file contains houses/transactions outside of Flint, name it outFlint.csv</li>
+<li>upload the shapefile houses/transactions in Flint, name folder inFlint, and file inFlint.shp</li>
+<li>upload the shapefile contains houses/transactions outside of Flint, name folder outFlint, and file outFlint.shp</li>
+<li>upload move all files into a new directory folder for project</li>
+</ul>
+<p>(p.s. If you are using the linx system, you can use “scp” command to upload file from your local machine into the VM, <a class="reference external" href="http://www.binarytides.com/linux-scp-command/">http://www.binarytides.com/linux-scp-command/</a>)</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Uploading all the required files to the Hadoop:</li>
+</ol>
+<blockquote>
+<div><ul>
+<li><p class="first">When you logged into the Roger VM, you need enter to the Hadoop VM, type <code class="code docutils literal"><span class="pre">ssh</span> <span class="pre">cg-hm08</span></code></p>
+</li>
+<li><p class="first">Use copyFromLocal command to get copy from Roger VM to Hadoop VM:</p>
+<p><code class="code docutils literal"><span class="pre">hdfs</span> <span class="pre">dfs</span> <span class="pre">-copyFromLocal</span> <span class="pre">[localFile]</span> <span class="pre">[HadoopPath]</span></code></p>
+<p>Eg. <code class="code docutils literal"><span class="pre">hdfs</span> <span class="pre">dfs</span> <span class="pre">-copyFromLocal</span> <span class="pre">inFlint.csv</span> <span class="pre">FlintProject/</span></code></p>
+</li>
+<li><p class="first">Repeatedly upload both inFlint.csv and outFlint.csv into the hadoop VM</p>
+</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Build the QuadTree:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>use command to build QuadTree for<ul>
+<li>in Flint: <code class="code docutils literal"><span class="pre">python</span> <span class="pre">app_chicago/buildTree_point.py</span> <span class="pre">inFlint/inFlint.shp</span> <span class="pre">quadTreeInFlint.txt</span></code></li>
+<li>out Flint: <code class="code docutils literal"><span class="pre">python</span> <span class="pre">app_chicago/buildTree_point.py</span> <span class="pre">outFlint/outFlint.shp</span> <span class="pre">quadTreeOutFlint.txt</span></code></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Change the quadTree file and Shapefile in <code class="code docutils literal"><span class="pre">hdPinP_point.py</span></code></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>use vim editor to edit <code class="code docutils literal"><span class="pre">vim</span> <span class="pre">app_chicago/hdPinP_point.py</span></code></li>
+<li>modify the #6 and #8 line into the associated file you want to process:</li>
+</ul>
+<p>Eg. If you want to do “Find the nearest neighbor of all houses/transactions from outside of Flint to inside of Flint”, then you will need to use <code class="code docutils literal"><span class="pre">../inFlint/inFlint.shp</span></code> on #6 and <code class="code docutils literal"><span class="pre">../quadTreeInFlint.txt</span></code> in #8.</p>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Run the Program on Hadoop:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>use <code class="code docutils literal"><span class="pre">hdfs</span> <span class="pre">dfs</span> <span class="pre">-ls</span></code> to check if the result file is exist. If exist, use <code class="code docutils literal"><span class="pre">hdfs</span> <span class="pre">dfs</span> <span class="pre">-rm</span> <span class="pre">-r</span> <span class="pre">[resultFolderName]</span></code> to remove the exist result first. Hadoop will show error if the result folder is exist on formal run.</li>
+<li>running the program on Hadoop with command:</li>
+</ul>
+<p>Use:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">nohup</span> <span class="n">hadoop</span> <span class="n">jar</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">hdp</span><span class="o">/</span><span class="mf">2.3</span><span class="o">.</span><span class="mf">2.0</span><span class="o">-</span><span class="mi">2602</span><span class="o">/</span><span class="n">hadoop</span><span class="o">-</span><span class="n">mapreduce</span><span class="o">/</span><span class="n">hadoop</span><span class="o">-</span><span class="n">streaming</span><span class="o">-</span><span class="mf">2.7</span><span class="o">.</span><span class="mf">1.2</span><span class="o">.</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">2602.</span><span class="n">jar</span> <span class="o">-</span><span class="n">files</span> <span class="n">app_chicago</span> <span class="o">-</span><span class="n">mapper</span> <span class="s2">&quot;app_chicago/hdPinP_point.py&quot;</span> <span class="o">-</span><span class="nb">input</span> <span class="n">outFlint</span><span class="o">.</span><span class="n">csv</span> <span class="o">-</span><span class="n">output</span> <span class="n">out2inFlint</span><span class="o">.</span><span class="n">txt</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+<p>If you are going to find all the points distance from outside to inside.
+Use</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">nohup</span> <span class="n">hadoop</span> <span class="n">jar</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">hdp</span><span class="o">/</span><span class="mf">2.3</span><span class="o">.</span><span class="mf">2.0</span><span class="o">-</span><span class="mi">2602</span><span class="o">/</span><span class="n">hadoop</span><span class="o">-</span><span class="n">mapreduce</span><span class="o">/</span><span class="n">hadoop</span><span class="o">-</span><span class="n">streaming</span><span class="o">-</span><span class="mf">2.7</span><span class="o">.</span><span class="mf">1.2</span><span class="o">.</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">2602.</span><span class="n">jar</span> <span class="o">-</span><span class="n">files</span> <span class="n">app_chicago</span> <span class="o">-</span><span class="n">mapper</span> <span class="s2">&quot;app_chicago/hdPinP_point.py&quot;</span> <span class="o">-</span><span class="nb">input</span> <span class="n">inflint</span><span class="o">.</span><span class="n">csv</span> <span class="o">-</span><span class="n">output</span> <span class="n">in2outFlint</span><span class="o">.</span><span class="n">txt</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+<p>If you are going to find all the points distance from inside to outside.</p>
+<p>All the output will be in a file called <code class="code docutils literal"><span class="pre">nohup.out</span></code>.</p>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="airpollution.html" class="btn btn-neutral float-right" title="Air Pollution" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Projects" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, BDEEP.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

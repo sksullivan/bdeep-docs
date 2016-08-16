@@ -1,0 +1,12 @@
+Infrastructure
+==============
+
+Contents:
+
+.. toctree::
+    :maxdepth: 2
+
+    handbook
+    ad-join
+    rstudio
+    documentation/index

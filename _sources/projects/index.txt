@@ -1,0 +1,14 @@
+Projects
+========
+
+Several projects our team is working on
+
+.. toctree::
+   :maxdepth: 2
+
+   zillow.rst
+   airpollution.rst
+   apartments.rst
+   congestion.rst
+   flint.rst
+   ridership.rst

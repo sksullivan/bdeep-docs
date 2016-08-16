@@ -1,0 +1,65 @@
+Installing RStudioServer on Ubuntu 15.04
+----------------------------------------
+
+.. contents:: Table of Contents
+
+-------------------------------------
+Installing an up-to-date version of R
+-------------------------------------
+
+.. code::
+
+  $ apt-add-repository -y ppa:marutter/rrutter
+
+    gpg: keyring `/tmp/tmpv24qs7rc/secring.gpg' created
+    gpg: keyring `/tmp/tmpv24qs7rc/pubring.gpg' created
+    gpg: requesting key B04C661B from hkp server keyserver.ubuntu.com
+    gpg: /tmp/tmpv24qs7rc/trustdb.gpg: trustdb created
+    gpg: key B04C661B: public key "Launchpad PPA for marutter" imported
+    gpg: Total number processed: 1
+    gpg:               imported: 1  (RSA: 1)
+    OK
+
+  $ apt-get update
+  $ apt-get install r-base r-base-dev
+
+---------------------
+Install RStudioServer
+---------------------
+
+.. code::
+
+    $ apt-get install gdebi-core
+    $ wget https://download2.rstudio.org/rstudio-server-0.99.893-amd64.deb
+    $ gdebi rstudio-server-0.99.893-amd64.deb
+
+      ● rstudio-server.service - RStudio Server
+         Loaded: loaded (/etc/systemd/system/rstudio-server.service; enabled; vendor preset: enabled)
+         Active: active (running) since Mon 2016-04-11 22:19:34 UTC; 1s ago
+        Process: 25815 ExecStart=/usr/lib/rstudio-server/bin/rserver (code=exited, status=0/SUCCESS)
+       Main PID: 25816 (rserver)
+         CGroup: /system.slice/rstudio-server.service
+                 └─25816 /usr/lib/rstudio-server/bin/rserver
+
+      Apr 11 22:19:34 rstudio-ad systemd[1]: Starting RStudio Server...
+      Apr 11 22:19:34 rstudio-ad systemd[1]: Started RStudio Server.
+
+-----------------------
+Configure RStudioServer
+-----------------------
+
+Change port from 8787 to 80
+
+.. code::
+
+  $ vim /etc/rstudio/rserver.conf
+
+    # Config
+    www-port=80
+
+Restart RStudioServer
+
+.. code::
+
+  $ service rstudio-server restart
+

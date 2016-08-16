@@ -1,0 +1,11 @@
+Mounting the Network Share
+==========================
+
+This guide page is for showing how to mount the network on a VM inside our
+infrastructure. If you are looking to mount the network share on your personal
+computer, please refer to the :doc:`../onboarding/resource-access`.
+
+The network share is mounted on our VMs with :code:`fstab`. At a high level, you
+need to add the correct line in :code:`/etc/fstab` and make a call to :code:`mount`.
+
+This is more text

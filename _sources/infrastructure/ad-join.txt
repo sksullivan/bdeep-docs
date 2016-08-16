@@ -1,0 +1,290 @@
+Joining a VM to the Active Directory Domain
+-------------------------------------------
+
+**Note**: This is currently not performed in our infrastructure. I experimented with it and for various reasons stopped implementing it. It may be helpful in the future if we decide we are going to use Active Directory.
+
+.. contents:: Table of Contents
+
+----------------------------
+Launch Ubuntu 15.04 instance
+----------------------------
+
+a) Make sure you include a keypair so you can SSH
+b) Make sure security groups allow you to SSH
+c) Associate a floating IP with the machine. We will use the following for our guide.
+
+
+We will use the following values for this guide. Please change them accordingly.
+  - LAN IP:       192.168.100.53
+  - External IP:  141.142.210.6
+  - Hostname:     ad_vm
+  - KeyPair:      admin.pem
+
+---------------------------------------
+SSH into the Machine. Gain root access.
+---------------------------------------
+
+.. code::
+
+  $ ssh -i ~/.ssh/admin.pem ubuntu@141.142.210.6
+  $ sudo su
+
+---------------------------
+Update and Install Packages
+---------------------------
+
+Update and install:
+
+.. code::
+
+  $ apt-get update
+  $ apt-get install winbind samba cifs-utils smbclient krb5-user libnss-winbind libpam-winbind libpam-mount
+
+
+Responses for Prompts
+
+.. code::
+
+  Default Kerberos version 5 realm: BDEEP.LAN
+  Kerberos Server for your realm:   DC1.BDEEP.LAN
+  Administrative Server:            DC1.BDEEP.LAN
+
+---------------------
+Updating Samba Config
+---------------------
+
+Save old configuration file
+
+.. code::
+
+  $ cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+
+
+Edit /etc/samba/smb.conf
+
+.. code::
+
+  [global]
+        security = ads
+        realm = BDEEP.LAN
+        workgroup = BDEEP
+        idmap uid = 10000-20000
+        idmap gid = 10000-20000
+        winbind enum users = yes
+        winbind enum groups = yes
+        template homedir = /home/%D/%U
+        template shell = /bin/bash
+        client use spnego = yes
+        client ntlmv2 auth = yes
+        encrypt passwords = yes
+        winbind use default domain = yes
+        restrict anonymous = 2
+
+We must restart winbind and samba after changing the configuration file
+
+.. code::
+
+  $ /etc/init.d/winbind stop
+  $ /etc/init.d/samba restart
+  $ /etc/init.d/winbind start
+
+-----------------
+Update hosts file
+-----------------
+
+Add the following two lines
+
+.. code::
+
+  192.168.100.51 DC1.bdeep.lan DC1
+  192.168.100.53 AD_VM.bdeep.lan AD_VM
+
+We can check to see if this worked by pinging the hosts
+
+.. code::
+
+  root@ad-vm:/home/ubuntu# ping ad_vm.bdeep.lan
+  PING RSTUDIO_AD.bdeep.lan (192.168.100.53) 56(84) bytes of data.
+  64 bytes from AD_VM.bdeep.lan (192.168.100.53): icmp_seq=1 ttl=64 time=0.016 ms
+  64 bytes from AD_VM.bdeep.lan (192.168.100.53): icmp_seq=2 ttl=64 time=0.026 ms
+  64 bytes from AD_VM.bdeep.lan (192.168.100.53): icmp_seq=3 ttl=64 time=0.019 ms
+
+.. code::
+
+  root@ad-vm:/home/ubuntu# ping dc1.bdeep.lan
+  PING DC1.bdeep.lan (192.168.100.51) 56(84) bytes of data.
+  64 bytes from DC1.bdeep.lan (192.168.100.51): icmp_seq=1 ttl=64 time=0.449 ms
+  64 bytes from DC1.bdeep.lan (192.168.100.51): icmp_seq=2 ttl=64 time=0.388 ms
+  64 bytes from DC1.bdeep.lan (192.168.100.51): icmp_seq=3 ttl=64 time=0.384 ms
+
+----------------------
+Obtain Kerberos Ticket
+----------------------
+
+Request Administrator Ticket
+
+.. code::
+
+  $ kinit Administrator
+
+    Password for Administrator@BDEEP.LAN:
+
+  $ klist -e
+
+    Ticket cache: FILE:/tmp/krb5cc_1000
+    Default principal: Administrator@BDEEP.LAN
+
+    Valid starting       Expires              Service principal
+    04/11/2016 18:57:21  04/12/2016 04:57:21  krbtgt/BDEEP.LAN@BDEEP.LAN
+            renew until 04/12/2016 18:57:07, Etype (skey, tkt): aes256-cts-hmac-sha1-96, aes256-cts-hmac-sha1-96
+
+
+-----------
+Join Domain
+-----------
+
+I'm not entirely sure why the following commands work. This section needs clarity
+
+.. code::
+
+  $ net ads join -U Administrator
+
+This previous command gives the following error:
+
+.. code::
+
+  Using short domain name -- BDEEP
+  Joined 'AD-VM' to dns domain 'bdeep.lan'
+  No DNS domain configured for ad-vm. Unable to perform DNS Update.
+  DNS update failed: NT_STATUS_INVALID_PARAMETER
+
+If you attempt to lookup the users in the domain, it will fail like this:
+
+.. code::
+
+  $ wbinfo -u
+
+  Error looking up domain users
+
+Restart these services and `wbinfo -u` will work
+
+.. code::
+
+  $ /etc/init.d/winbind stop
+  $ /etc/init.d/samba restart
+  $ /etc/init.d/winbind start
+
+  $ wbuinfo -u
+
+    administrator
+    krbtgt
+    guest
+
+At this point, you will not be able to su into a network user. We need to integrate authentication.
+
+------------------------
+Integrate Authentication
+------------------------
+
+We need to update /etc/nsswitch.conf to use winbind. Change the `passwd` and `group` entries as such.
+
+.. code::
+
+  $ vim /etc/nsswitch.conf
+
+    passwd:         compat winbind
+    group:          compat winbind
+    shadow:         compat
+
+    hosts:          files dns
+    networks:       files
+
+    protocols:      db files
+    services:       db files
+    ethers:         db files
+    rpc:            db files
+
+    netgroup:       nis
+
+Restart winbind
+
+.. code::
+
+  $ /etc/init.d/winbind restart
+
+Now we are able to su into network users
+
+.. code::
+
+  $ su administrator
+
+    administrator@ad-vm:/home/ubuntu$ exit
+    exit
+
+We can also view these network users in our passwd
+
+.. code::
+
+  $ getent passwd
+
+    ....
+    ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
+    administrator:\*:10000:10002:Administrator:/home/BDEEP/administrator:/bin/bash
+    krbtgt:\*:10002:10002:krbtgt:/home/BDEEP/krbtgt:/bin/bash
+    guest:\*:10003:10008:Guest:/home/BDEEP/guest:/bin/bash
+
+Notice how the network users have an asterisk while system users do not.
+
+-------------------------------------------------------
+Mount network share in user's home directory (OPTIONAL)
+-------------------------------------------------------
+
+If we login as a network users, we will get the following error upon `cd ~`
+
+.. code::
+
+  $ su administrator
+  $ cd
+
+  bash: cd: /home/BDEEP/administrator: No such file or directory
+
+We will mount the network share as the users directory automatically on login
+
+.. code::
+
+  $ mkdir /home/BDEEP
+
+Edit PAM mount config to include the following
+
+.. code::
+
+  $ vim /etc/security/pam_mount.conf.xml
+
+  <pam_mount>
+    ...
+    <volume fstype="cifs" server="dc1.bdeep.lan" path="share" mountpoint="/home/BDEEP/%(USER)"/>
+  </pam_mount
+
+Su into a user and check to see if the share is mounting
+
+.. code::
+
+  $ su administrator
+  $ mount
+
+    //dc1.bdeep.lan/share on /home/BDEEP/administrator type cifs (rw,relatime,vers=1.0,cache=strict,username=administrator,domain=BDEEP,uid=10000,forceuid,gid=10002,forcegid,addr=192.168.100.51,unix,posixpaths,serverino,acl,rsize=61440,wsize=65536,actimeo=1)
+
+Upon exit, the share should be unmounted
+
+.. code::
+
+  $ exit
+  $ mount
+
+    ... No network share should be mounted
+
+------
+Enjoy!
+------
+
+Everything should be good to go!

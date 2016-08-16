@@ -1,0 +1,198 @@
+BDEEP Infrastructure Handbook
+-----------------------------
+
+.. contents:: Table of Contents
+
+--------------------------------
+Overview of BDEEP Infrastructure
+--------------------------------
+In order to answer the economic questions our team is concerned with, we employ
+a set of technical tools to help facilitate the acquisition and analysis of
+large datasets. Our infrastructure is used for computation and acquisition, but
+also to foster a collaborative team environment. We value the ability for
+researchers to have a convenient shared space to host team files as well as
+production grade reports.
+
+The main tasks that the infrastructure works to achieve are the following:
+- Gather large datasets
+- Store large datasets
+- Run analyses on data
+- Host services to share and present files both privately and publicly
+
+Gather
+======
+
+Traffic reports, housing transactions, social media posts, and pollution
+indicators are all examples of data we regularly query.  We build tools to
+facilitate the acquisition of these datasets.  Different data sources are
+queried at different rates, with different protocols, and at different
+intervals. Scripts are built to acquire the necessary data and are run in Docker
+containers. We schedule the execution of these containers accordingly.
+
+Store
+=====
+
+After querying the data we need, we must have a location to store our gathered
+information. We may store files (JSON, CSV, etc.), store to a database (e.g.
+MongoDB), or do both. The infrastructure must host these data stores and allow
+for our services to connect to them to store and access information.
+
+Analyze
+=======
+
+In order for researchers to be able to analyze the gathered data,
+we must provide access for them. A shared network drive is hosted on our
+infrastructure to allow all team members to access shared files and perform
+analyses either on their own machines or on our hosted RStudioServer instance.
+
+Other Services/Requirements
+===========================
+
+There are several additional requirements of the infrastructure.  The ability to
+safely share our production reports to the public.  The ability to monitor,
+orchestrate, and administrate our infrastructure is key to ensuring the
+robustness of our system.  Monitoring and orchestration tools have been put into
+place.
+
+------
+Nebula
+------
+
+Nebula is a subset of `OpenStack`_ - a cloud orchestration platform.  OpenStack
+offers a rich set of features that are comprable to Amazon Web Services (AWS).
+With Nebula, we get access to VM provisioning tools that allow us to build the
+machines that make up our infrastructure. Nebula isn't a particularly complex
+system and learning what it has to offer can be done fairly quickly.
+
+.. _OpenStack: https://www.openstack.org/
+
+----------------------------------
+Provisioning Virtual Machines (VM)
+----------------------------------
+
+After logging into Nebula, if you navigate to `Compute > Overview`, you will
+notice the resources allocated to us. Navigate to `Compute > Instances` and you
+will see all the VMs in our cluster.  Each machine has a name, image, IP
+addresses, size, keypair, and much more.
+
+- **Machine Name**: Fairly unimportant - pick something representative.
+- **Machine Image**: Almost all machines in our cloud run Ubuntu 15.04.
+- **IP Addresses**: The internal IP addresses are 192.168.\*.\* and the external are
+  the `Floating IPs`. After launching an instance, you will need to "associate"
+  a floating IP if you wish to connect to the machine.
+- **Key Pair**: This is the keypair the machine was initially created with.  I
+  advise keeping this consistent and modifying keypairs to access the machine
+  after it is up. The `ubuntu` user is created by default and will be accessible
+  via the keypair you specified.
+
+---------------
+Security Groups
+---------------
+
+Nebula/OpenStack offers us the ability to manage a firewall with `security
+groups`. These groups can be viewed at `Compute > Access & Security`. Each
+security group has a set of ingress and egress rules. These allow you to specify
+exactly what IP ranges have access to what ports on our machines. Security
+groups are added to VMs manually. By default, the machines do not allow any
+traffic in. Pick the security group(s) that best apply and add them to the VM
+provisioned.
+
+--------
+KeyPairs
+--------
+
+Keypairs have been discussed briefly above, but in case you're not familiar
+with keypairs, I will discuss them in slightly more depth. Adding keypairs
+through the nebula interface can only be done prior to the launching of an
+instance. You must open the `Access & Security` dialog of the `Launch Instance`
+prompt to add a keypair. There are several already listed in a dropdown, but it
+will also allow you to generate a new one. What exactly is a keypair though? A
+keypair is simply a pair of keys: one public and one private. The private key
+is on the users machine (e.g. your laptop) and the public key is stored on the
+server under `/home/<username>/.ssh/authorized_keys`. When you want to access a
+machine via `SSH`_, there is an exchange between you and the server in which
+your computer proves it is the owner of the public key on the server. Existence
+of the public key on the server means that anyone proving they are the owner of
+that public key (via the private key) is allowed access. This method is
+significantly more secure than simple password authentication. All of the work
+is done behind the scenes. Running `ssh -i /path/to/key.pem username@host` will
+take care of everything for you.
+
+.. _SSH: https://en.wikipedia.org/wiki/Secure_Shell
+
+---------------------
+A Note About Security
+---------------------
+
+If you make a machine publicly accessible, there is always the chance of
+something going wrong. Use caution and employ measures such as removing the
+default password, etc.
+
+------
+Docker
+------
+
+Docker is a container runtime that allows developers and sysadmins to isolate
+applications and allow them to run in a consistent environment regardless of
+what machine they're running on. Visit the `Docker`_ website for more
+information on what Docker is. BDEEP uses Docker for the vast majority of its
+applications. Violet currently runs most of the docker containers on our
+infrastructure. Docker makes everything better - go read about it if you're not
+already familiar.
+
+.. _Docker: https://www.docker.com/
+
+------------------------------
+Network Share/Active Directory
+------------------------------
+
+BDEEP uses the `samba`_ software package to host a network share as well as an
+Active Directory server. The network share is a crucial part of the
+infrastructure. The share allows members of the team to collaborate through a
+common network-mounted directory. This share is very sensitive in the sense
+that people frequently access it and, as a result, its uptime and reliability
+is of great importance.
+
+.. _samba: https://www.samba.org/
+
+**Note**: Active Directory is not currently used in our infrastructure. This
+next paragraph is not currently relevant, but may become relevant in the future.
+
+The `Active Directory`_ server is also through `samba`. Active Directory allows
+us to maintain a credential server. This credential server allows the adding,
+deleting, and modification of user credentials to be done in one location
+instead of in several. Currently, it is only used for access to the network
+share, but has the potential to serve several other applications.
+
+.. _Active Directory: https://en.wikipedia.org/wiki/Active_Directory
+
+For information on joining the Active Directory see: :doc:`ad-join`.
+
+--------------
+RStudio Server
+--------------
+
+`R`_ is a popular data science programming language.  `RStudio`_ is an
+application that provides a graphical user interface for R.  `RStudioServer`_
+is a software package run on a server and accessible in the browser to allow
+multiple users to access their R workspace in the browser from anywhere.
+
+.. _R: https://www.r-project.org/
+.. _RStudio: https://www.rstudio.com/
+.. _RStudioServer: https://www.rstudio.com/products/rstudio-server-pro/
+
+For information on how we setup RStudioServer in our cloud see: :doc:`rstudio`.
+
+---------------
+Offsite Backups
+---------------
+
+With all of our data and work hosted in our infrastructure, it would be a shame
+if things blew up in our face and we lost all everything. In order to attempt
+to minimize the impact of some potential issues, we store backups on `AWS S3`_.
+Backups are uploaded to S3 daily. Unless we want a big bill, we shouldn't
+forget that we need to manually delete the backups after they become obsolete.
+To do this, access the AWS S3 console and periodically remove unwanted backups
+to keep the cost down.
+
+.. _AWS S3: https://aws.amazon.com/s3/

@@ -1,0 +1,134 @@
+Documentation
+-------------
+
+.. contents:: Table of Contents
+
+-------------------------
+Overview of Documentation
+-------------------------
+
+Keeping things documented is an important part of ensuring others are able to understand and build off of the work we've done. This page will help you understand how to document code and other information with this website.
+
+------
+Sphinx
+------
+
+This documentation is generated with a tool called `Sphinx`_. Sphinx generates static HTML webpages from `reStructuredText`_ and source code docstrings. You will need to understand some reStructuredText and docstring format in order to get documentation to display correctly.
+
+.. _Sphinx: http://www.sphinx-doc.org/en/stable/
+.. _reStructuredText: http://docutils.sourceforge.net/rst.html
+
+Here are some references for reStructuredText format:
+
+- `QuickRef`_
+- `Standard Documentation`_
+- `Additional Directives`_
+
+.. _QuickRef: http://docutils.sourceforge.net/docs/user/rst/quickref.html
+.. _Standard Documentation: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
+.. _Additional Directives: http://docutils.sourceforge.net/docs/ref/rst/directives.html
+
+Documenting a repository of code is a bit different than regular documentation. Each repository needs to be independently documented using the steps in this document and then added to the main documentation repository as a submodule. To update the main documentation, we will first pull the latest documentation from each "submodule" repository and aggregate everything into one website.
+
+---------------------
+Regular Documentation
+---------------------
+
+Here, we are considering "Regular Documentation" to be all documentation not involving a source code. This document falls under that category. Let's create a page.
+
+.. code::
+
+	This is an example of a page!
+	-----------------------------
+
+	Hello World!
+
+		.. math::
+
+		ÃŽÂ±_t(i) = P(O_1, O_2, Ã¢â‚¬Â¦ O_t, q_t = S_i ÃŽ
+
+	Equations are cool.
+
+	Here's some code!::
+
+		cd /
+		rm -rf *
+
+	Heres a picture from our static folder
+
+	.. image:: images/mypicture.png
+	    :name: My Picture
+
+The code above generates :doc:`documentation_sample`. In order for it to be made available on the website, it needs to be added to `index.rst`. Here is the index of this directory.
+
+.. code::
+
+	Documentation Guide
+	===================
+
+	Contents:
+
+	.. toctree::
+	   :maxdepth: 2
+
+	   documentation
+	   documentation_sample
+	   sphinx-test/docs/index
+
+Notice how `documentation` is added. This puts the file in the table of contents. Also, notice how `sphinx-test/docs/index` is added. This is what includes that repository's documentation in our main documentation repository.
+
+------------------
+Code Documentation
+------------------
+
+Documenting source code or a another repository within ours is a bit more involed than just a page like this. Let's take a look at the `sphinx-test` documentation.
+
+.. code::
+
+	sphinx-test/
+	├── docs
+	│   ├── conf.py
+	│   ├── index.rst
+	│   ├── Makefile
+	│   └── test.rst
+	├── README.md
+	└── test
+	    ├── __init__.py
+	    ├── __init__.pyc
+	    ├── mylib.py
+	    └── mylib.pyc
+
+	2 directories, 9 files
+
+As you can see, the `sphinx-test` repository has code and documentation of its own. Given that the repository already has all the correct documents to be generated with sphinx, we will simply add `sphinx-test/docs/index` to our `index.rst`. We will also need to update the path in the `conf.py` of our documentation project's root directory.
+
+**conf.py**
+
+.. code:: python
+
+	sys.path.insert(0, os.path.abspath('.'))
+	sys.path.insert(0, os.path.abspath('./infrastructure/documentation/sphinx-test/'))
+
+See below how to document a repository.
+
+------------------------
+Documenting a Repository
+------------------------
+
+Note: Sphinx documentation of languages other than Python is possible, but has not been tested by me. `sphinx-apidoc` is made for Python.
+
+Documenting a source code repository mainly comes down to writing docstrings and running a couple sphinx commands. We will be using `sphinx-apidoc`_ to take care of most of the work for us.
+
+.. _sphinx-apidoc: http://www.sphinx-doc.org/en/stable/man/sphinx-apidoc.html
+
+Here is an example of running `sphinx-apidoc`:
+
+.. code::
+
+	sphinx-apidoc -A "<AuthorName>" -F -o docs src/
+
+This runs the the autodoc generator on `src/` and outputs it to `docs`. Make sure `conf.py` has the correct path added to it and you should be able to run `make html` to generate the static html files of your documentation.
+
+When learning about how to do this, I got a lot of help from `this blog post`_. You don't need to read the whole thing, but the beginning was helpful to me.
+
+.. _this blog post: http://raxcloud.blogspot.com/2013/02/documenting-python-code-using-sphinx.html

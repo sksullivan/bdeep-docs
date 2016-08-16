@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Congestion &mdash; BDEEP Documentation 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BDEEP Documentation 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Projects" href="index.html"/>
+        <link rel="next" title="Flint" href="flint.html"/>
+        <link rel="prev" title="Apartments" href="apartments.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BDEEP Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Projects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="zillow.html">Zillow Flint Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airpollution.html">Air Pollution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apartments.html">Apartments</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Congestion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#guide-to-the-bdeep-congestion-stack">Guide to the BDEEP Congestion Stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#toc">TOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#brief-introduction">0. Brief Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisite-setup">1. Prerequisite Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-organization">2. System Organization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-tasks">3. Common Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#future-work">4. Future Work</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flint.html">Flint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ridership.html">RiderShip</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../onboarding/index.html">Onboarding Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">BDEEP Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Projects</a> &raquo;</li>
+      
+    <li>Congestion</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/projects/congestion.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="congestion">
+<h1>Congestion<a class="headerlink" href="#congestion" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="guide-to-the-bdeep-congestion-stack">
+<h2>Guide to the BDEEP Congestion Stack<a class="headerlink" href="#guide-to-the-bdeep-congestion-stack" title="Permalink to this headline">¶</a></h2>
+<p>Author: Stephen Sullivan
+Written: 5-5-2016</p>
+</div>
+<div class="section" id="toc">
+<h2>TOC<a class="headerlink" href="#toc" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" start="0">
+<li>Brief Introduction</li>
+<li>Prerequisite Setup</li>
+<li>System Organization</li>
+<li>Common Tasks</li>
+<li>Future Work</li>
+</ol>
+</div>
+<div class="section" id="brief-introduction">
+<h2>0. Brief Introduction<a class="headerlink" href="#brief-introduction" title="Permalink to this headline">¶</a></h2>
+<p>Hello, fellow BDEEP developer! This document will hopefully turn you into a congestion project whiz in no time. I added each section for its functional importance: Prereq Setup will show you what you need to interact with and develop the system. Sys Org. will show you how all of the software is setup. Common Tasks will teach how to do things you&#8217;re probably going to need to do a lot; sort of like an FAQ section. Future Work contains my thoughts on implementing the future features for the congestion project.</p>
+</div>
+<div class="section" id="prerequisite-setup">
+<h2>1. Prerequisite Setup<a class="headerlink" href="#prerequisite-setup" title="Permalink to this headline">¶</a></h2>
+<p>Now let us look that tools needed to develop and interact with the congestion project.  First off, a Mac or linux environment is preferred.  If you&#8217;re using windows, you’re going to have to go through more steps that will not be outlined in this document.  However, I will suggest tools that you may be able to use.  See the end of the section for steps related to windows.</p>
+<p>Access</p>
+<p>Since the congestion project is run entirely on virtual machines, we’ll need a system for remote access.  Currently we use two systems, SSH and Remote Desktop.  Eric should be contacted if you want to use remote desktop.  Let’s look at SSH.</p>
+<p>There are two virtual machines of interest for this project.  The first is called “Violet,” which runs the logic controllers for the project, and the second is called “Jade,” which runs our database services.  This setup may change in the future, and I would encourage it to expand when scaling the congestion project.  Again, Eric is a good person to contact about virtual machine infrastructure.</p>
+<p>Before attempting to connect to either VM, you will need to be connected to the UIUC VPN.  This is accomplished by downloading the Cisco VPN client from UIUC web store.  Fortunately, it is free for UIUC students.  The host to connect to is vpn.cites.illinois.edu.  Further instructions can be found on the web store page.</p>
+<p>Once you were connected to the UIUC VPN, to connect to either VM, it is simplest to use SSH.  In order to use SSH however, we first need a key file that will serve as our credentials for logging into either virtual machine.  Acquire this key file from Eric.  It should be called: steve-roaming.pem.  If this file is sent to you over slack, after downloading it, you will need to change the file permissions before it can be used with SSH (This step is not needed on windows, as windows will use a third party application).  Execute the command:</p>
+<p>$ chmod 600 steve-roaming.pem</p>
+<p>This ensures that the key file is only accessible by you, the current user.  Now, to connect to one of the virtual machines, execute the command:</p>
+<p>For Violet:</p>
+<p>$ ssh -i /path/to/steve-roaming.pem <a class="reference external" href="mailto:ubuntu&#37;&#52;&#48;141&#46;142&#46;209&#46;140">ubuntu<span>&#64;</span>141<span>&#46;</span>142<span>&#46;</span>209<span>&#46;</span>140</a></p>
+<p>For Jade:</p>
+<p>$ ssh -i /path/to/steve-roaming.pem <a class="reference external" href="mailto:ubuntu&#37;&#52;&#48;141&#46;142&#46;209&#46;153">ubuntu<span>&#64;</span>141<span>&#46;</span>142<span>&#46;</span>209<span>&#46;</span>153</a></p>
+<p>You should now be logged in to the destination virtual machine.  At this point, you can probably look at the common tasks section for your next steps.</p>
+<p>Development Knowledge: <a class="reference external" href="https://www.youtube.com/watch?v=1-axFUhoUCc">https://www.youtube.com/watch?v=1-axFUhoUCc</a></p>
+<p>TL;DR Familiarize yourself with Python, Git &amp; Github, Ubuntu (linux in general), MongoDB, Docker, REST APIs, APScheduler (python package), Openstack (service that runs our VMs, not critical to know) and Testing &amp; Test Driven Development.</p>
+<p>Transcript:
+&gt;&gt;&gt;
+Alright so the reason I&#8217;m making a recording for this is I don&#8217;t really expect anyone to need to hear this more than once; you&#8217;re probably just going to listen to this thing when you start on the project and you don&#8217;t really need to refer to it again. I&#8217;ll give a little TL;DR after this in the docs but anyway I just wanted to talk really quick about the prerequisite knowledge that you need to work on the congestion project because it&#8217;s kind of complicated there&#8217;s a lot of different Technologies and like I said I just want to give a quick overview of what you need to know.</p>
+<p>So first things first all of our services are written in Python okay and we&#8217;re not using Python 3 were using python 2, so I&#8217;ll talk about that more in the software setup section but you don&#8217;t need to be a python expert or anything like that we’re mostly just using the basic functionality some of the file IO stuff nothing too complicated.</p>
+<p>Okay next thing you need to know about our setup is that we use git for Version Control, we use GitHub to host our code. We have an organization called UIUC BDEEP. That&#8217;s going to be the organization to which you&#8217;re going to put all of your code so you can see right here we have all of these projects. For instance you know, well, let&#8217;s see, here data loader, it’s relevant, okay here&#8217;s some random code here&#8217;s a file, okay we go back, coordinator, that&#8217;s another relevant one to the congestion project or code, some comments, things like that</p>
+<p>Next you need to know how to use linux. All of our VMs run Ubuntu so knowing how to use Linux and the command line is going to be critical. Again you don&#8217;t have to be in Ubuntu expert you; don&#8217;t have to be a Linux expert okay but just knowing the basic commands for instance how do I copy a file from the VM to my computer, that&#8217;s a pretty important thing. I&#8217;m going to go over that in common tasks but just having some background knowledge about Linux is pretty important.</p>
+<p>Okay next up mongodb that&#8217;s our database. Mongodb is a no-sql database. The reason for using a no-sql database is because we don&#8217;t know 100% what data we need to store for the congestion project and so we can&#8217;t use something like MySQL or postgres quite yet. We&#8217;re probably going to move to that eventually but for now we&#8217;re using mongodb. Again you don&#8217;t need to be a mongo expert, don&#8217;t worry about it, you just need to have a basic idea of what&#8217;s going on. I would recommend looking at documentation for the Mongo shell.</p>
+<p>Next up Docker. Docker is a technology that you may not have heard of, but you may have heard of it. If you have, great, again you don&#8217;t need to be a Docker expert, all we do with it is we use it sort of like a Sandboxing service for applications. Okay what that means is when you start one of our services, which again is going to be a python application, this python application is actually going to run inside a tiny little virtual machine running on violet or Jade, okay, and the reason we do this is because if one of our applications gets hacked or crashes or it starts using up all of our system resources it&#8217;s going to be sandboxed meaning it&#8217;s going to crash itself, okay, but it&#8217;s not going to take down all of the other services running on each virtual machine. Another thing is that it provides a pretty good separation of concerns so when you&#8217;re working on one container or only working on the functionality for that container right, I&#8217;ll get to that a little bit more in the organization section.</p>
+<p>Okay REST APIs are a pretty critical piece of this project. We use REST APIs to communicate between all of our services. Probably reading up on REST is a good idea; here&#8217;s a nice tutorial that I found this Marklogic thing, okay, this is pretty nice because it&#8217;s just going to give you a quick little overview of the basic concepts in REST APIs, CRUD is a good example, that&#8217;s create, read, update, delete operations. That&#8217;s a pretty common interface for databases and we use it to describe operations in our database. We don&#8217;t necessarily use strict strict adherence to rest interface guidelines but that&#8217;s the way we communicate between your services, so that&#8217;s a pretty good thing to know.</p>
+<p>Getting into the more specific stuff, AP scheduler is a python package that we use pretty heavily in the service coordinator if you&#8217;re working on scaling the congestion project or you&#8217;re working on setting up new variations on congestion stack you&#8217;re going to have to learn to use AP scheduler. This is basically a wrapper around a bunch of different scheduling applications in Linux. We use cron as the driver for AP scheduler and this thing just allows basically for python functions in your code to be called at regular intervals, like, say, once a day or at specific times like 3 hours from now.</p>
+<p>Openstack is not necessarily super specific to the congestion project but it is the software that runs all of our VMs. Okay and so primarily dealing with Openstack is Eric’s concern but it&#8217;s not a bad idea to have a vague idea what Openstack does and how it works. Again not incredibly important, okay, but something good to have an awareness of</p>
+<p>Last but not least test-driven development. This is a thing, if you&#8217;re doing your undergrad at UIUC you&#8217;re going to take a class called 242. Another one that&#8217;s a good class to take at 427, that&#8217;s software engineering, OK, and both of these classes will teach you about test-driven development which is basically where you write tests for your code, OK, and then you actually develop your code. And if you don&#8217;t know what are unit test are, and integration test, that&#8217;s fine, read up on it a little bit.</p>
+<p>The basic idea is it&#8217;s a way to verify the functionality of your code, okay, and so the reason I talk about test-driven development is because some of our code has tests and it&#8217;s pretty important to maintain those tests because they are going to catch a lot of problems for you before you would discover them in production. So I know writing tests may seem like kind of a pain and something that takes a lot of time and isn&#8217;t worth the effort, but it really actually saves time and the long run by fixing logic errors before you even would catch them, right, so that&#8217;s that.</p>
+<p>Hopefully this wasn&#8217;t too horrible, I will give more details on some of these things and subsequent sections and good luck working on the project.
+&gt;&gt;&gt;</p>
+<p>Relevant Links:</p>
+<p>BDEEP Github Organization: <a class="reference external" href="https://github.com/uiuc-bdeep">https://github.com/uiuc-bdeep</a></p>
+<p>REST API Tutorial: <a class="reference external" href="https://developer.marklogic.com/try/rest/index">https://developer.marklogic.com/try/rest/index</a></p>
+<p>APScheduler Docs: <a class="reference external" href="https://apscheduler.readthedocs.io/en/latest/">https://apscheduler.readthedocs.io/en/latest/</a></p>
+<p>Wiki Article on TDD: <a class="reference external" href="https://en.wikipedia.org/wiki/Test-driven_development">https://en.wikipedia.org/wiki/Test-driven_development</a></p>
+<p>Development Tools</p>
+<p>In order to develop for the congestion project, you’re going to need several things set up in your development environments.  Again, I will reiterate that a Unix environment (Mac or linux) is going to make this process a lot easier.  The tools we need are as follows: python, to run our services, Docker, to run our services in their containerized forms and finally mongo DB for running our database.  Note that mongo is technically optional, since you could create a new collection in our existing mongo database for debugging purposes.</p>
+<p>Typically, I don’t recommend using IDEs, since they obscure of the development process, to some degree, and are hard to debug when things go wrong.  Vim is a pretty solid tool to use since it works a locally and over SSH.  However, feel free to use whatever auxiliary development tools you like.  Just keep in mind that there is no guarantee that these tools will be able to be used on the virtual machines.</p>
+<p>Tools for Windows</p>
+<p>I have never found development on windows to easy, except when creating applications for Windows.  That being said, with a couple of tools, I think it is possible to work on the congestion project from a windows environment.  The key piece of the puzzle is an application called mobaxterm.  This application creates a full Unix-like environments in windows.  This application can be used to SSH into virtual machines using key files, and it can also be used with programs like python from the command line.  Additionally, there is a windows GUI application for git, I’ve used this before and it works pretty well.  Finally, the git shell, installed with the GUI application, is also a pretty good tool when working on a project that requires the Unix environments.  It also simulates the Unix-environment and provides utilities like cp and mv.</p>
+</div>
+<div class="section" id="system-organization">
+<h2>2. System Organization<a class="headerlink" href="#system-organization" title="Permalink to this headline">¶</a></h2>
+<p>The congestion project is set up as a collection of individual applications, or services, that communicate with external resources, with local files, and amongst themselves.  Each application is a python script that runs inside a Docker Container.  We use a tool called Docker–compose to coordinate bringing all of these containers up or down at once.  As mentioned in the above video, we containerize our applications to promote good separation of concerns and application security as well as to prevent programming conflicts.</p>
+<p>The basic flow of data is from local files and external resources into our database, and then from our database to economic analysis applications and the shared drive.  The shared drive is a network drive attached to a VM in our cluster that is mounted to all of the service of the alms all the time.  This network drive appears as a local folder to all of the service the VMs enabling python scripts to read and write from the network drive as if the network drive was a part of each service VM’s hard drive.  The coordinator service orchestrates this data flow.
+Getting into slightly more detail, the specific elements from which we retrieve data in this project are Sao Paulo, Brazil traffic surveys from 2007 and 2012 and the Google distance matrix API.  The traffic survey is a giant (you’ll need Microsoft excel or a very robust text editor to open it) spreadsheet, available in xlsx or CSV format.  This spreadsheet contains information about trips taken over a week (Monday to Friday) in the city of Sao Paolo Brazil.  These trips represent commuting to work, commuting to school, buying groceries, etc., and every trip has an origin the latitude and longitude, a destination latitude and longitude, a day of the week on which the trip took place, an hour of the day, and a minute of the hour.  The mode of transportation is also recorded for each trip, as well as a lot of other miscellaneous information.  We have a script called the data loader to read in the CSV file, parse it, and create a table on the mongo DB instance with the record for every single trip.  We have this table so that services can quickly and easily query trip data.</p>
+<p>Managing the database is a service called the database controller.  Feel free to have a look at the source of the service for the specific details, but the general idea is that the service provides simple access to database of operations, such as reading of all trips from the database or adding new trips to the database.  This service exists for two reasons, primarily so that we don’t have services reading and writing in an uncontrolled manner to the database.  Secondly, it allows us to abstract away the exact nature of the underlying database from the services they need to access the data in the database.  For instance, by simply rewriting the database controller, we could fairly straightforwardly change the underlying database from mongo DB to, say, MySQL without needing to change the way any of the services interact with the database.  As we scale and add new tables to the database, the database controller will have to change.  While it is somewhat unfortunate that the database controller needs to be updated a lot, the aforementioned benefits will pay large dividends down the road.</p>
+<p>The google distance matrix API allows us to simulate trips taken in Sao Paulo.  We want to do this so that we can gauge how long trips taken in Sao Paulo would take today, at the current time.  For instance, if, in the traffic survey, there is a record indicating that a trip was taken and nine PM Sao Paulo time on a Thursday night, we want to query the google distance matrix API and see how long that trip actually takes.  We can perform the simulation every week for, say, six months, and generate a time series graph of how long each trip takes over the six month period. The google distance matrix API is accessed by the crawler service.  The service has a simple function, to make API requests to the google distance matrix API a when requested by another service.  Other services can specify parameters when requesting that the crawler service make a request to the google distance matrix API, such as what mode of transportation should be requested and the destination latitude and longitude for the request.  The crawler service also allows for batch requesting, where service can request the crawler service to make a large set of requests to the Google distance matrix API, and return a large array of results.  While the service has a fairly simple function, it is somewhat fickle in its operation because of the myriad errors that can occur when making requests to the google distance matrix API.  The different types of errors are listed in the code, but the main types to be concerned about are rate limiting errors, google internal server errors, invalid parameter errors and generic unknown errors.  Of greatest concern are rate limiting errors.  Since the google distance matrix API does not allow us to make an unlimited amount of requests over a specified time interval, we are forced to adhere to certain request rate rules.  There are two types of rules, daily requests volume rules and short term volume rules.  The daily request volume rule specifies that we can make no more than 100,000 requests per day in the short term volume rule specifies that we can make a no more than 100 requests per 10 seconds.
+The coordinator service is at the center of all of these other services.  The coordinator reads the entire contents of the mongo DB table related to traffic data into memory, and schedules one request per trip to the crawler service to be made at the time of each trip.  In other words, since there are roughly 50,000 trips in the database over the course of a week, the coordinator sets up 50,000 requests to be made to the google distance matrix API over the course of the week, keeping in mind that the coordinator runs 24/7 and ensures the google distance matrix API requests are made in real time.  The density of trip requests follows a roughly bimodal distribution over the course of each day, with one peak around a 6 to 8 AM in the morning and one peak around 6 to 8 PM in the evening.  Since at 6:00 PM on a Friday night in Sao Paulo there are many more than 100 trips taken, the crawler service would be rate limited if it tried to make the correct amount of requests to the google distance matrix API at 6:00 PM.  Therefore, instead of scheduling all of the 6:00 PM Friday night trip’s requests to occur precisely at 6:00 PM, the coordinator has special functionality implemented to space out the requests for the 6:00 PM Friday night trips over a larger interval of time that complies with the rate limiting rules.  This functionality is referred to as the coordinator’s request reshaper and was a fairly nontrivial part in developing the coordinator.</p>
+<p>The coordinator’s actual scheduling is implemented with AP scheduler, the aforementioned python package.  I highly, highly recommend reading the documentation for AP scheduler.  It is very clear, concise, and will shed light on the somewhat non intuitive workings of AP scheduler.  When the coordinator reads in the traffic data table from the mongo DB, it sets up an instance of AP scheduler to keep track of jobs that should be executed in the future.  After reading in the table, it calls a function on the AP scheduler instance to set up a future task.  This task executes a batch of requests for trips from the traffic survey to the crawler service.  The batches are kept track of in a job dictionary stored on the coordinator.</p>
+<p>Notes that since the coordinator is probably the most complicated service in the congestion stack, it has unit tests written for if they can be executed by running the tests.py script that is part of the coordinator service code base.
+The last service and the congestion stack is the CSV parser.  This service, once a day, simply reads in all of the records stored in the mongo DB and writes the data to a CSV file on the shared drive.  Note that the service does not use AP scheduler, it uses a separate python module called scheduler that is much easier to use and doesn’t do quite as much as AP scheduler.
+That’s the gist of it!  Don’t feel overwhelmed by the complexity of the setup, it’ll make more sense once you’ve spent some time with it.</p>
+</div>
+<div class="section" id="common-tasks">
+<h2>3. Common Tasks<a class="headerlink" href="#common-tasks" title="Permalink to this headline">¶</a></h2>
+<p>Some things you may want to do with some frequency:</p>
+<p>•Use the mongo shell to search for records in our database</p>
+<p>•Start and stop the congestion stack with Docker</p>
+<p>•Move code around (pull code from Github, push code up to the VMs, etc.)</p>
+<p>•See what’s running on the VMs</p>
+<p>These common tasks are pretty essential for running our services and troubleshooting them.</p>
+<p>Mongo Shell</p>
+<p>The mongo shell is started by the following command:</p>
+<p>$ mongo</p>
+<p>You’ll now be looking at the mongo shell prompt.  I would advise reading the documentation for the mongo shell, first, before attempting to perform operations on the database.  Simple commands include find, which will locate and print database records based on a search query, count, which will total up are returned results for you, create collection, which will make new tables in the database and finally pretty, which will nicely indent and format printed results.</p>
+<p>Starting and Stopping the Stack with Docker</p>
+<p>Before trying to work with Docker, I highly recommend becoming familiar with the basic commands by reading the Docker documentation on line.  We use a utility called Docker compose to start and stop Docker Containers in groups.  This allows us to start up all of the services related to the congestion stack at once, as well as bring them down at once.  The commands to accomplish this are relatively simple, once you’re logged into violent you can simply run:</p>
+<p>$ cd traffic_stack &amp;&amp; docker-compose up –d up</p>
+<p>to start everything.  This command puts us in the directory for the traffic stack and then uses Docker compose to start up all of the containers, without connecting to stdout for the containers.  To stop everything, run:</p>
+<p>$ docker-compose down</p>
+<p>this command simply stops all of the running containers for the traffic stack.</p>
+<p>Dealing with Code</p>
+<p>To get our code on your computer, ask Eric to become a member of the BDEEP github organization.  Once you remember, you can simply clone down any of the repos you see on github.  To get code on the VMs that you have edited, just push your code up to github, and then pull that code down on violet or jade.</p>
+<p>View Running Applications</p>
+<p>To see what’s running on violet or jade, you can do one of two things.  To see what containers are running, simple execute the command:</p>
+<p>$ docker ps</p>
+<p>this will show you all running containers, for how long each container has been running, and when each container was started.  Additionally, to simply list all running processes, you can execute the command:</p>
+<p>$ ps aux | grep PROCESS_NAME</p>
+<p>where PROCESS_NAME is something like “python,” “mongo” or “coverage.”</p>
+</div>
+<div class="section" id="future-work">
+<h2>4. Future Work<a class="headerlink" href="#future-work" title="Permalink to this headline">¶</a></h2>
+<p>Challenges Scaling: <a class="reference external" href="https://www.youtube.com/watch?v=aHESk3rhNoo">https://www.youtube.com/watch?v=aHESk3rhNoo</a></p>
+<p>TL;DR There are three challenges we&#8217;ll deal with scaling, new trip surveys, new web resources and rate limiting. We&#8217;ll solve these by expanding our existing services in a few specific ways.</p>
+<p>Transcript:
+&gt;&gt;&gt;
+So I just want to talk about the challenges I foresee scaling the congestion stack and expanding to new cities, and I also want to give a couple of suggestions for how to overcome these challenges.</p>
+<p>First off these are just going to be suggestions, they&#8217;re not hard fast rules, they&#8217;re not requirements, and I think you&#8217;re probably going to find that you&#8217;ll need to make your own modifications when Peter tells you to do certain things and as the requirements for the new cities change, so again these are just my ideas, my suggestions.</p>
+<p>The basic problem we&#8217;re trying to solve is parallelizing our existing set up with the coordinator, crawler and database. We&#8217;re going to be adding new trip surveys for new cities and we&#8217;re going to be adding web resources. For instance if we want to simulate trips in Beijing we can&#8217;t use the Google distance Matrix API; we&#8217;re going to have to use a Chinese service so obviously we&#8217;re going to have to adapt our code and maybe write some new code to deal with this.</p>
+<p>The nice thing is that we don&#8217;t have data dependencies and we don&#8217;t have to worry about concurrency or consistency because data collected for, say, New York is not going to affect data collected for Beijing or for Sao Paulo Brazil so all we need to do is in essence duplicate the machinery that we have for collecting data in Sao Paulo for these new cities.</p>
+<p>There are three challenges I foresee with this process. We&#8217;re going to have new trip survey formats, we&#8217;re going to have new web resources and we&#8217;re going to have problems with rate-limiting. So let me just go through those one by one.</p>
+<p>First of all, new trip survey formats are going to be an issue because when we get to, say, a trip survey from New York it may have a different way of indexing their days, so for instance maybe they start their week on Sunday rather than Monday.</p>
+<p>They might be using different time zones to record when the trips occur and they might have different data types for their information. For instance in the Sao Paulo trip survey the longitude and latitude are stored as floating Point decimal numbers. For the New York survey they might be stored as strings so we&#8217;re going to have to adapt the way our data loader works, however we can just add code to the data loader, we can just add cases to it.</p>
+<p>I would not recommend writing a whole new data loader because that&#8217;s going to cause a lot of overhead and realistically all we should have to do is maybe specify a command line parameter when running the data loader that indicates what format we should use.</p>
+<p>New web resources are going to be a slight issue to deal with, all we have to do again is add some new code to the crawler that maybe indicates some cases. So again we can add a command line parameter that says what web resource the crawler should target. We also want to add a command line parameter or some type of parameter for the API key that the Crawlers should use and I&#8217;ll go over why we need to do that in a second.</p>
+<p>As for modifying the Crawler code, the only thing that should have to change are the API requests that the crawler executes, nothing else should have to change.</p>
+<p>So now we&#8217;re at the rate-limiting problem. This is, I think, the largest issue we&#8217;re going to have to deal with but it&#8217;s not going to be impossible to surmount. I think the best way to proceed in tackling this problem is by creating multiple crawlers.</p>
+<p>The issue is that for any one crawler we operate with an API key that has a limit of 100,000 requests per day and a limit of 100 requests per second. This is not going to be enough request volume to deal with traffic for 10 cities. The coordinator has existing machinery called the request reshaper that gets around these limits for one city, but the request reshaper is not going to cut it when we have, say, a million trips that we need to get data for as opposed to 50,000.</p>
+<p>What we&#8217;re going to have to do is add more crawlers and the basic way we&#8217;re going to figure out how many crawlers we need is based on the fact that there are 50,000 requests per week in Sao Paolo. Assuming other cities are similar will have 10,000 requests per day for each city and so we&#8217;re going to need roughly 1 crawler for every 10 cities since each City requires 10,000 requests per day and we have 100,000 requests per day for each crawler (for each API key technically).</p>
+<p>One thing to keep in mind is that if we have more crawlers we&#8217;re going to have more accurate data since we won&#8217;t have to space the requests out as much if we have more Crawlers. Aside from that, the only other consideration is that when the coordinator schedules all of the trip requests to be run it will have to schedule those over not just one crawled, but over multiple crawlers, and that&#8217;s going to be a fairly straightforward modification to the coordinator code. Instead of a single for-loop to schedule all the trips we might have to do a couple of loops to make it happen over multiple trips and multiple crawlers but that won&#8217;t be a terrible pain.</p>
+<p>Lastly we really don&#8217;t need to modify the CSV parser. All we have to do is make it deal with data from more than one city, so maybe we want to add a field on the CSV that we generate at the end of the process that indicates what city each trip belongs to.</p>
+<p>We still only need one database controller because since we&#8217;re not adding any new coordinators, so since we&#8217;re not adding any new coordinators it&#8217;s still going to communicate with one database controller.</p>
+<p>That&#8217;s fine, we can just make the database controller write to possibly more than one table in our database and as far as the database goes we maybe just need to add more tables or just keep one table and tag each trip record with a city that it belongs to.</p>
+<p>And that&#8217;s really all we&#8217;re going to have to worry about; I think probably we will run into some new issues that we can&#8217;t foresee right now but like I said solving those three challenges with the new trip survey formats, the new web resources and the rate-limiting will get us through this scaling problem and hopefully equip us to deal with as many cities as we want.
+&gt;&gt;&gt;</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="flint.html" class="btn btn-neutral float-right" title="Flint" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="apartments.html" class="btn btn-neutral" title="Apartments" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, BDEEP.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+Onboarding Guide
+================
+
+This is a guide for new or potential members to the BDEEP Team. 
+
+.. toctree::
+   :maxdepth: 1
+
+   resource-access
+   provisioningcredentials.rst

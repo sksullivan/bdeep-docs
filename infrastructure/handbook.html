@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BDEEP Infrastructure Handbook &mdash; BDEEP Documentation 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BDEEP Documentation 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Infrastructure" href="index.html"/>
+        <link rel="next" title="Joining a VM to the Active Directory Domain" href="ad-join.html"/>
+        <link rel="prev" title="Infrastructure" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BDEEP Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../projects/index.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../onboarding/index.html">Onboarding Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Infrastructure</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BDEEP Infrastructure Handbook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview-of-bdeep-infrastructure">Overview of BDEEP Infrastructure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gather">Gather</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#store">Store</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analyze">Analyze</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-services-requirements">Other Services/Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#nebula">Nebula</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#provisioning-virtual-machines-vm">Provisioning Virtual Machines (VM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security-groups">Security Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keypairs">KeyPairs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-note-about-security">A Note About Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-share-active-directory">Network Share/Active Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rstudio-server">RStudio Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#offsite-backups">Offsite Backups</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ad-join.html">Joining a VM to the Active Directory Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html">Installing RStudioServer on Ubuntu 15.04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/index.html">Documentation Guide</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">BDEEP Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Infrastructure</a> &raquo;</li>
+      
+    <li>BDEEP Infrastructure Handbook</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/infrastructure/handbook.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bdeep-infrastructure-handbook">
+<h1><a class="toc-backref" href="#id2">BDEEP Infrastructure Handbook</a><a class="headerlink" href="#bdeep-infrastructure-handbook" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#bdeep-infrastructure-handbook" id="id2">BDEEP Infrastructure Handbook</a><ul>
+<li><a class="reference internal" href="#overview-of-bdeep-infrastructure" id="id3">Overview of BDEEP Infrastructure</a><ul>
+<li><a class="reference internal" href="#gather" id="id4">Gather</a></li>
+<li><a class="reference internal" href="#store" id="id5">Store</a></li>
+<li><a class="reference internal" href="#analyze" id="id6">Analyze</a></li>
+<li><a class="reference internal" href="#other-services-requirements" id="id7">Other Services/Requirements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#nebula" id="id8">Nebula</a></li>
+<li><a class="reference internal" href="#provisioning-virtual-machines-vm" id="id9">Provisioning Virtual Machines (VM)</a></li>
+<li><a class="reference internal" href="#security-groups" id="id10">Security Groups</a></li>
+<li><a class="reference internal" href="#keypairs" id="id11">KeyPairs</a></li>
+<li><a class="reference internal" href="#a-note-about-security" id="id12">A Note About Security</a></li>
+<li><a class="reference internal" href="#docker" id="id13">Docker</a></li>
+<li><a class="reference internal" href="#network-share-active-directory" id="id14">Network Share/Active Directory</a></li>
+<li><a class="reference internal" href="#rstudio-server" id="id15">RStudio Server</a></li>
+<li><a class="reference internal" href="#offsite-backups" id="id16">Offsite Backups</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview-of-bdeep-infrastructure">
+<h2><a class="toc-backref" href="#id3">Overview of BDEEP Infrastructure</a><a class="headerlink" href="#overview-of-bdeep-infrastructure" title="Permalink to this headline">¶</a></h2>
+<p>In order to answer the economic questions our team is concerned with, we employ
+a set of technical tools to help facilitate the acquisition and analysis of
+large datasets. Our infrastructure is used for computation and acquisition, but
+also to foster a collaborative team environment. We value the ability for
+researchers to have a convenient shared space to host team files as well as
+production grade reports.</p>
+<p>The main tasks that the infrastructure works to achieve are the following:
+- Gather large datasets
+- Store large datasets
+- Run analyses on data
+- Host services to share and present files both privately and publicly</p>
+<div class="section" id="gather">
+<h3><a class="toc-backref" href="#id4">Gather</a><a class="headerlink" href="#gather" title="Permalink to this headline">¶</a></h3>
+<p>Traffic reports, housing transactions, social media posts, and pollution
+indicators are all examples of data we regularly query.  We build tools to
+facilitate the acquisition of these datasets.  Different data sources are
+queried at different rates, with different protocols, and at different
+intervals. Scripts are built to acquire the necessary data and are run in Docker
+containers. We schedule the execution of these containers accordingly.</p>
+</div>
+<div class="section" id="store">
+<h3><a class="toc-backref" href="#id5">Store</a><a class="headerlink" href="#store" title="Permalink to this headline">¶</a></h3>
+<p>After querying the data we need, we must have a location to store our gathered
+information. We may store files (JSON, CSV, etc.), store to a database (e.g.
+MongoDB), or do both. The infrastructure must host these data stores and allow
+for our services to connect to them to store and access information.</p>
+</div>
+<div class="section" id="analyze">
+<h3><a class="toc-backref" href="#id6">Analyze</a><a class="headerlink" href="#analyze" title="Permalink to this headline">¶</a></h3>
+<p>In order for researchers to be able to analyze the gathered data,
+we must provide access for them. A shared network drive is hosted on our
+infrastructure to allow all team members to access shared files and perform
+analyses either on their own machines or on our hosted RStudioServer instance.</p>
+</div>
+<div class="section" id="other-services-requirements">
+<h3><a class="toc-backref" href="#id7">Other Services/Requirements</a><a class="headerlink" href="#other-services-requirements" title="Permalink to this headline">¶</a></h3>
+<p>There are several additional requirements of the infrastructure.  The ability to
+safely share our production reports to the public.  The ability to monitor,
+orchestrate, and administrate our infrastructure is key to ensuring the
+robustness of our system.  Monitoring and orchestration tools have been put into
+place.</p>
+</div>
+</div>
+<div class="section" id="nebula">
+<h2><a class="toc-backref" href="#id8">Nebula</a><a class="headerlink" href="#nebula" title="Permalink to this headline">¶</a></h2>
+<p>Nebula is a subset of <a class="reference external" href="https://www.openstack.org/">OpenStack</a> - a cloud orchestration platform.  OpenStack
+offers a rich set of features that are comprable to Amazon Web Services (AWS).
+With Nebula, we get access to VM provisioning tools that allow us to build the
+machines that make up our infrastructure. Nebula isn&#8217;t a particularly complex
+system and learning what it has to offer can be done fairly quickly.</p>
+</div>
+<div class="section" id="provisioning-virtual-machines-vm">
+<h2><a class="toc-backref" href="#id9">Provisioning Virtual Machines (VM)</a><a class="headerlink" href="#provisioning-virtual-machines-vm" title="Permalink to this headline">¶</a></h2>
+<p>After logging into Nebula, if you navigate to <cite>Compute &gt; Overview</cite>, you will
+notice the resources allocated to us. Navigate to <cite>Compute &gt; Instances</cite> and you
+will see all the VMs in our cluster.  Each machine has a name, image, IP
+addresses, size, keypair, and much more.</p>
+<ul class="simple">
+<li><strong>Machine Name</strong>: Fairly unimportant - pick something representative.</li>
+<li><strong>Machine Image</strong>: Almost all machines in our cloud run Ubuntu 15.04.</li>
+<li><strong>IP Addresses</strong>: The internal IP addresses are 192.168.*.* and the external are
+the <cite>Floating IPs</cite>. After launching an instance, you will need to &#8220;associate&#8221;
+a floating IP if you wish to connect to the machine.</li>
+<li><strong>Key Pair</strong>: This is the keypair the machine was initially created with.  I
+advise keeping this consistent and modifying keypairs to access the machine
+after it is up. The <cite>ubuntu</cite> user is created by default and will be accessible
+via the keypair you specified.</li>
+</ul>
+</div>
+<div class="section" id="security-groups">
+<h2><a class="toc-backref" href="#id10">Security Groups</a><a class="headerlink" href="#security-groups" title="Permalink to this headline">¶</a></h2>
+<p>Nebula/OpenStack offers us the ability to manage a firewall with <cite>security
+groups</cite>. These groups can be viewed at <cite>Compute &gt; Access &amp; Security</cite>. Each
+security group has a set of ingress and egress rules. These allow you to specify
+exactly what IP ranges have access to what ports on our machines. Security
+groups are added to VMs manually. By default, the machines do not allow any
+traffic in. Pick the security group(s) that best apply and add them to the VM
+provisioned.</p>
+</div>
+<div class="section" id="keypairs">
+<h2><a class="toc-backref" href="#id11">KeyPairs</a><a class="headerlink" href="#keypairs" title="Permalink to this headline">¶</a></h2>
+<p>Keypairs have been discussed briefly above, but in case you&#8217;re not familiar
+with keypairs, I will discuss them in slightly more depth. Adding keypairs
+through the nebula interface can only be done prior to the launching of an
+instance. You must open the <cite>Access &amp; Security</cite> dialog of the <cite>Launch Instance</cite>
+prompt to add a keypair. There are several already listed in a dropdown, but it
+will also allow you to generate a new one. What exactly is a keypair though? A
+keypair is simply a pair of keys: one public and one private. The private key
+is on the users machine (e.g. your laptop) and the public key is stored on the
+server under <cite>/home/&lt;username&gt;/.ssh/authorized_keys</cite>. When you want to access a
+machine via <a class="reference external" href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a>, there is an exchange between you and the server in which
+your computer proves it is the owner of the public key on the server. Existence
+of the public key on the server means that anyone proving they are the owner of
+that public key (via the private key) is allowed access. This method is
+significantly more secure than simple password authentication. All of the work
+is done behind the scenes. Running <cite>ssh -i /path/to/key.pem username&#64;host</cite> will
+take care of everything for you.</p>
+</div>
+<div class="section" id="a-note-about-security">
+<h2><a class="toc-backref" href="#id12">A Note About Security</a><a class="headerlink" href="#a-note-about-security" title="Permalink to this headline">¶</a></h2>
+<p>If you make a machine publicly accessible, there is always the chance of
+something going wrong. Use caution and employ measures such as removing the
+default password, etc.</p>
+</div>
+<div class="section" id="docker">
+<h2><a class="toc-backref" href="#id13">Docker</a><a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<p>Docker is a container runtime that allows developers and sysadmins to isolate
+applications and allow them to run in a consistent environment regardless of
+what machine they&#8217;re running on. Visit the <a class="reference external" href="https://www.docker.com/">Docker</a> website for more
+information on what Docker is. BDEEP uses Docker for the vast majority of its
+applications. Violet currently runs most of the docker containers on our
+infrastructure. Docker makes everything better - go read about it if you&#8217;re not
+already familiar.</p>
+</div>
+<div class="section" id="network-share-active-directory">
+<h2><a class="toc-backref" href="#id14">Network Share/Active Directory</a><a class="headerlink" href="#network-share-active-directory" title="Permalink to this headline">¶</a></h2>
+<p>BDEEP uses the <a class="reference external" href="https://www.samba.org/">samba</a> software package to host a network share as well as an
+Active Directory server. The network share is a crucial part of the
+infrastructure. The share allows members of the team to collaborate through a
+common network-mounted directory. This share is very sensitive in the sense
+that people frequently access it and, as a result, its uptime and reliability
+is of great importance.</p>
+<p><strong>Note</strong>: Active Directory is not currently used in our infrastructure. This
+next paragraph is not currently relevant, but may become relevant in the future.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Active_Directory">Active Directory</a> server is also through <cite>samba</cite>. Active Directory allows
+us to maintain a credential server. This credential server allows the adding,
+deleting, and modification of user credentials to be done in one location
+instead of in several. Currently, it is only used for access to the network
+share, but has the potential to serve several other applications.</p>
+<p>For information on joining the Active Directory see: <a class="reference internal" href="ad-join.html"><span class="doc">Joining a VM to the Active Directory Domain</span></a>.</p>
+</div>
+<div class="section" id="rstudio-server">
+<h2><a class="toc-backref" href="#id15">RStudio Server</a><a class="headerlink" href="#rstudio-server" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.r-project.org/">R</a> is a popular data science programming language.  <a class="reference external" href="https://www.rstudio.com/">RStudio</a> is an
+application that provides a graphical user interface for R.  <a class="reference external" href="https://www.rstudio.com/products/rstudio-server-pro/">RStudioServer</a>
+is a software package run on a server and accessible in the browser to allow
+multiple users to access their R workspace in the browser from anywhere.</p>
+<p>For information on how we setup RStudioServer in our cloud see: <a class="reference internal" href="rstudio.html"><span class="doc">Installing RStudioServer on Ubuntu 15.04</span></a>.</p>
+</div>
+<div class="section" id="offsite-backups">
+<h2><a class="toc-backref" href="#id16">Offsite Backups</a><a class="headerlink" href="#offsite-backups" title="Permalink to this headline">¶</a></h2>
+<p>With all of our data and work hosted in our infrastructure, it would be a shame
+if things blew up in our face and we lost all everything. In order to attempt
+to minimize the impact of some potential issues, we store backups on <a class="reference external" href="https://aws.amazon.com/s3/">AWS S3</a>.
+Backups are uploaded to S3 daily. Unless we want a big bill, we shouldn&#8217;t
+forget that we need to manually delete the backups after they become obsolete.
+To do this, access the AWS S3 console and periodically remove unwanted backups
+to keep the cost down.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ad-join.html" class="btn btn-neutral float-right" title="Joining a VM to the Active Directory Domain" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Infrastructure" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, BDEEP.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

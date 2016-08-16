@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Joining a VM to the Active Directory Domain &mdash; BDEEP Documentation 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BDEEP Documentation 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Infrastructure" href="index.html"/>
+        <link rel="next" title="Installing RStudioServer on Ubuntu 15.04" href="rstudio.html"/>
+        <link rel="prev" title="BDEEP Infrastructure Handbook" href="handbook.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BDEEP Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../projects/index.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../onboarding/index.html">Onboarding Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Infrastructure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="handbook.html">BDEEP Infrastructure Handbook</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Joining a VM to the Active Directory Domain</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#launch-ubuntu-15-04-instance">Launch Ubuntu 15.04 instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ssh-into-the-machine-gain-root-access">SSH into the Machine. Gain root access.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-and-install-packages">Update and Install Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updating-samba-config">Updating Samba Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-hosts-file">Update hosts file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#obtain-kerberos-ticket">Obtain Kerberos Ticket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#join-domain">Join Domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrate-authentication">Integrate Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mount-network-share-in-user-s-home-directory-optional">Mount network share in user&#8217;s home directory (OPTIONAL)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enjoy">Enjoy!</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html">Installing RStudioServer on Ubuntu 15.04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/index.html">Documentation Guide</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">BDEEP Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Infrastructure</a> &raquo;</li>
+      
+    <li>Joining a VM to the Active Directory Domain</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/infrastructure/ad-join.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="joining-a-vm-to-the-active-directory-domain">
+<h1><a class="toc-backref" href="#id1">Joining a VM to the Active Directory Domain</a><a class="headerlink" href="#joining-a-vm-to-the-active-directory-domain" title="Permalink to this headline">¶</a></h1>
+<p><strong>Note</strong>: This is currently not performed in our infrastructure. I experimented with it and for various reasons stopped implementing it. It may be helpful in the future if we decide we are going to use Active Directory.</p>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#joining-a-vm-to-the-active-directory-domain" id="id1">Joining a VM to the Active Directory Domain</a><ul>
+<li><a class="reference internal" href="#launch-ubuntu-15-04-instance" id="id2">Launch Ubuntu 15.04 instance</a></li>
+<li><a class="reference internal" href="#ssh-into-the-machine-gain-root-access" id="id3">SSH into the Machine. Gain root access.</a></li>
+<li><a class="reference internal" href="#update-and-install-packages" id="id4">Update and Install Packages</a></li>
+<li><a class="reference internal" href="#updating-samba-config" id="id5">Updating Samba Config</a></li>
+<li><a class="reference internal" href="#update-hosts-file" id="id6">Update hosts file</a></li>
+<li><a class="reference internal" href="#obtain-kerberos-ticket" id="id7">Obtain Kerberos Ticket</a></li>
+<li><a class="reference internal" href="#join-domain" id="id8">Join Domain</a></li>
+<li><a class="reference internal" href="#integrate-authentication" id="id9">Integrate Authentication</a></li>
+<li><a class="reference internal" href="#mount-network-share-in-user-s-home-directory-optional" id="id10">Mount network share in user&#8217;s home directory (OPTIONAL)</a></li>
+<li><a class="reference internal" href="#enjoy" id="id11">Enjoy!</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="launch-ubuntu-15-04-instance">
+<h2><a class="toc-backref" href="#id2">Launch Ubuntu 15.04 instance</a><a class="headerlink" href="#launch-ubuntu-15-04-instance" title="Permalink to this headline">¶</a></h2>
+<ol class="loweralpha simple">
+<li>Make sure you include a keypair so you can SSH</li>
+<li>Make sure security groups allow you to SSH</li>
+<li>Associate a floating IP with the machine. We will use the following for our guide.</li>
+</ol>
+<dl class="docutils">
+<dt>We will use the following values for this guide. Please change them accordingly.</dt>
+<dd><ul class="first last simple">
+<li>LAN IP:       192.168.100.53</li>
+<li>External IP:  141.142.210.6</li>
+<li>Hostname:     ad_vm</li>
+<li>KeyPair:      admin.pem</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="ssh-into-the-machine-gain-root-access">
+<h2><a class="toc-backref" href="#id3">SSH into the Machine. Gain root access.</a><a class="headerlink" href="#ssh-into-the-machine-gain-root-access" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ ssh -i ~/.ssh/admin.pem ubuntu@141.142.210.6
+$ sudo su
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-and-install-packages">
+<h2><a class="toc-backref" href="#id4">Update and Install Packages</a><a class="headerlink" href="#update-and-install-packages" title="Permalink to this headline">¶</a></h2>
+<p>Update and install:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ apt-get update
+$ apt-get install winbind samba cifs-utils smbclient krb5-user libnss-winbind libpam-winbind libpam-mount
+</pre></div>
+</div>
+<p>Responses for Prompts</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">Default</span> <span class="n">Kerberos</span> <span class="n">version</span> <span class="mi">5</span> <span class="n">realm</span><span class="p">:</span> <span class="n">BDEEP</span><span class="o">.</span><span class="n">LAN</span>
+<span class="n">Kerberos</span> <span class="n">Server</span> <span class="k">for</span> <span class="n">your</span> <span class="n">realm</span><span class="p">:</span>   <span class="n">DC1</span><span class="o">.</span><span class="n">BDEEP</span><span class="o">.</span><span class="n">LAN</span>
+<span class="n">Administrative</span> <span class="n">Server</span><span class="p">:</span>            <span class="n">DC1</span><span class="o">.</span><span class="n">BDEEP</span><span class="o">.</span><span class="n">LAN</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="updating-samba-config">
+<h2><a class="toc-backref" href="#id5">Updating Samba Config</a><a class="headerlink" href="#updating-samba-config" title="Permalink to this headline">¶</a></h2>
+<p>Save old configuration file</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+</pre></div>
+</div>
+<p>Edit /etc/samba/smb.conf</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="k">global</span><span class="p">]</span>
+      <span class="n">security</span> <span class="o">=</span> <span class="n">ads</span>
+      <span class="n">realm</span> <span class="o">=</span> <span class="n">BDEEP</span><span class="o">.</span><span class="n">LAN</span>
+      <span class="n">workgroup</span> <span class="o">=</span> <span class="n">BDEEP</span>
+      <span class="n">idmap</span> <span class="n">uid</span> <span class="o">=</span> <span class="mi">10000</span><span class="o">-</span><span class="mi">20000</span>
+      <span class="n">idmap</span> <span class="n">gid</span> <span class="o">=</span> <span class="mi">10000</span><span class="o">-</span><span class="mi">20000</span>
+      <span class="n">winbind</span> <span class="n">enum</span> <span class="n">users</span> <span class="o">=</span> <span class="n">yes</span>
+      <span class="n">winbind</span> <span class="n">enum</span> <span class="n">groups</span> <span class="o">=</span> <span class="n">yes</span>
+      <span class="n">template</span> <span class="n">homedir</span> <span class="o">=</span> <span class="o">/</span><span class="n">home</span><span class="o">/%</span><span class="n">D</span><span class="o">/%</span><span class="n">U</span>
+      <span class="n">template</span> <span class="n">shell</span> <span class="o">=</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+      <span class="n">client</span> <span class="n">use</span> <span class="n">spnego</span> <span class="o">=</span> <span class="n">yes</span>
+      <span class="n">client</span> <span class="n">ntlmv2</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">yes</span>
+      <span class="n">encrypt</span> <span class="n">passwords</span> <span class="o">=</span> <span class="n">yes</span>
+      <span class="n">winbind</span> <span class="n">use</span> <span class="n">default</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">yes</span>
+      <span class="n">restrict</span> <span class="n">anonymous</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>We must restart winbind and samba after changing the configuration file</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ /etc/init.d/winbind stop
+$ /etc/init.d/samba restart
+$ /etc/init.d/winbind start
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-hosts-file">
+<h2><a class="toc-backref" href="#id6">Update hosts file</a><a class="headerlink" href="#update-hosts-file" title="Permalink to this headline">¶</a></h2>
+<p>Add the following two lines</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="mf">192.168</span><span class="o">.</span><span class="mf">100.51</span> <span class="n">DC1</span><span class="o">.</span><span class="n">bdeep</span><span class="o">.</span><span class="n">lan</span> <span class="n">DC1</span>
+<span class="mf">192.168</span><span class="o">.</span><span class="mf">100.53</span> <span class="n">AD_VM</span><span class="o">.</span><span class="n">bdeep</span><span class="o">.</span><span class="n">lan</span> <span class="n">AD_VM</span>
+</pre></div>
+</div>
+<p>We can check to see if this worked by pinging the hosts</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@ad</span><span class="o">-</span><span class="n">vm</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="c1"># ping ad_vm.bdeep.lan</span>
+<span class="n">PING</span> <span class="n">RSTUDIO_AD</span><span class="o">.</span><span class="n">bdeep</span><span class="o">.</span><span class="n">lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">100.53</span><span class="p">)</span> <span class="mi">56</span><span class="p">(</span><span class="mi">84</span><span class="p">)</span> <span class="nb">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="o">.</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">AD_VM.bdeep.lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">100.53</span><span class="p">):</span> <span class="n">icmp_seq</span><span class="o">=</span><span class="mi">1</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">0.016</span> <span class="n">ms</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">AD_VM.bdeep.lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">100.53</span><span class="p">):</span> <span class="n">icmp_seq</span><span class="o">=</span><span class="mi">2</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">0.026</span> <span class="n">ms</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">AD_VM.bdeep.lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">100.53</span><span class="p">):</span> <span class="n">icmp_seq</span><span class="o">=</span><span class="mi">3</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">0.019</span> <span class="n">ms</span>
+</pre></div>
+</div>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@ad</span><span class="o">-</span><span class="n">vm</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="c1"># ping dc1.bdeep.lan</span>
+<span class="n">PING</span> <span class="n">DC1</span><span class="o">.</span><span class="n">bdeep</span><span class="o">.</span><span class="n">lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">100.51</span><span class="p">)</span> <span class="mi">56</span><span class="p">(</span><span class="mi">84</span><span class="p">)</span> <span class="nb">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="o">.</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">DC1.bdeep.lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">100.51</span><span class="p">):</span> <span class="n">icmp_seq</span><span class="o">=</span><span class="mi">1</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">0.449</span> <span class="n">ms</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">DC1.bdeep.lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">100.51</span><span class="p">):</span> <span class="n">icmp_seq</span><span class="o">=</span><span class="mi">2</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">0.388</span> <span class="n">ms</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">DC1.bdeep.lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">100.51</span><span class="p">):</span> <span class="n">icmp_seq</span><span class="o">=</span><span class="mi">3</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">0.384</span> <span class="n">ms</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="obtain-kerberos-ticket">
+<h2><a class="toc-backref" href="#id7">Obtain Kerberos Ticket</a><a class="headerlink" href="#obtain-kerberos-ticket" title="Permalink to this headline">¶</a></h2>
+<p>Request Administrator Ticket</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ kinit Administrator
+
+  Password for Administrator@BDEEP.LAN:
+
+$ klist -e
+
+  Ticket cache: FILE:/tmp/krb5cc_1000
+  Default principal: Administrator@BDEEP.LAN
+
+  Valid starting       Expires              Service principal
+  04/11/2016 18:57:21  04/12/2016 04:57:21  krbtgt/BDEEP.LAN@BDEEP.LAN
+          renew until 04/12/2016 18:57:07, Etype (skey, tkt): aes256-cts-hmac-sha1-96, aes256-cts-hmac-sha1-96
+</pre></div>
+</div>
+</div>
+<div class="section" id="join-domain">
+<h2><a class="toc-backref" href="#id8">Join Domain</a><a class="headerlink" href="#join-domain" title="Permalink to this headline">¶</a></h2>
+<p>I&#8217;m not entirely sure why the following commands work. This section needs clarity</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ net ads join -U Administrator
+</pre></div>
+</div>
+<p>This previous command gives the following error:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">Using</span> <span class="n">short</span> <span class="n">domain</span> <span class="n">name</span> <span class="o">--</span> <span class="n">BDEEP</span>
+<span class="n">Joined</span> <span class="s1">&#39;AD-VM&#39;</span> <span class="n">to</span> <span class="n">dns</span> <span class="n">domain</span> <span class="s1">&#39;bdeep.lan&#39;</span>
+<span class="n">No</span> <span class="n">DNS</span> <span class="n">domain</span> <span class="n">configured</span> <span class="k">for</span> <span class="n">ad</span><span class="o">-</span><span class="n">vm</span><span class="o">.</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">perform</span> <span class="n">DNS</span> <span class="n">Update</span><span class="o">.</span>
+<span class="n">DNS</span> <span class="n">update</span> <span class="n">failed</span><span class="p">:</span> <span class="n">NT_STATUS_INVALID_PARAMETER</span>
+</pre></div>
+</div>
+<p>If you attempt to lookup the users in the domain, it will fail like this:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ wbinfo -u
+
+Error looking up domain users
+</pre></div>
+</div>
+<p>Restart these services and <cite>wbinfo -u</cite> will work</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ /etc/init.d/winbind stop
+$ /etc/init.d/samba restart
+$ /etc/init.d/winbind start
+
+$ wbuinfo -u
+
+  administrator
+  krbtgt
+  guest
+</pre></div>
+</div>
+<p>At this point, you will not be able to su into a network user. We need to integrate authentication.</p>
+</div>
+<div class="section" id="integrate-authentication">
+<h2><a class="toc-backref" href="#id9">Integrate Authentication</a><a class="headerlink" href="#integrate-authentication" title="Permalink to this headline">¶</a></h2>
+<p>We need to update /etc/nsswitch.conf to use winbind. Change the <cite>passwd</cite> and <cite>group</cite> entries as such.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ vim /etc/nsswitch.conf
+
+  passwd:         compat winbind
+  group:          compat winbind
+  shadow:         compat
+
+  hosts:          files dns
+  networks:       files
+
+  protocols:      db files
+  services:       db files
+  ethers:         db files
+  rpc:            db files
+
+  netgroup:       nis
+</pre></div>
+</div>
+<p>Restart winbind</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ /etc/init.d/winbind restart
+</pre></div>
+</div>
+<p>Now we are able to su into network users</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ su administrator
+
+  administrator@ad-vm:/home/ubuntu$ exit
+  exit
+</pre></div>
+</div>
+<p>We can also view these network users in our passwd</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ getent passwd
+
+  ....
+  ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
+  administrator:\*:10000:10002:Administrator:/home/BDEEP/administrator:/bin/bash
+  krbtgt:\*:10002:10002:krbtgt:/home/BDEEP/krbtgt:/bin/bash
+  guest:\*:10003:10008:Guest:/home/BDEEP/guest:/bin/bash
+</pre></div>
+</div>
+<p>Notice how the network users have an asterisk while system users do not.</p>
+</div>
+<div class="section" id="mount-network-share-in-user-s-home-directory-optional">
+<h2><a class="toc-backref" href="#id10">Mount network share in user&#8217;s home directory (OPTIONAL)</a><a class="headerlink" href="#mount-network-share-in-user-s-home-directory-optional" title="Permalink to this headline">¶</a></h2>
+<p>If we login as a network users, we will get the following error upon <cite>cd ~</cite></p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ su administrator
+$ cd
+
+bash: cd: /home/BDEEP/administrator: No such file or directory
+</pre></div>
+</div>
+<p>We will mount the network share as the users directory automatically on login</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ mkdir /home/BDEEP
+</pre></div>
+</div>
+<p>Edit PAM mount config to include the following</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ vim /etc/security/pam_mount.conf.xml
+
+&lt;pam_mount&gt;
+  ...
+  &lt;volume fstype=&quot;cifs&quot; server=&quot;dc1.bdeep.lan&quot; path=&quot;share&quot; mountpoint=&quot;/home/BDEEP/%(USER)&quot;/&gt;
+&lt;/pam_mount
+</pre></div>
+</div>
+<p>Su into a user and check to see if the share is mounting</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ su administrator
+$ mount
+
+  //dc1.bdeep.lan/share on /home/BDEEP/administrator type cifs (rw,relatime,vers=1.0,cache=strict,username=administrator,domain=BDEEP,uid=10000,forceuid,gid=10002,forcegid,addr=192.168.100.51,unix,posixpaths,serverino,acl,rsize=61440,wsize=65536,actimeo=1)
+</pre></div>
+</div>
+<p>Upon exit, the share should be unmounted</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ exit
+$ mount
+
+  ... No network share should be mounted
+</pre></div>
+</div>
+</div>
+<div class="section" id="enjoy">
+<h2><a class="toc-backref" href="#id11">Enjoy!</a><a class="headerlink" href="#enjoy" title="Permalink to this headline">¶</a></h2>
+<p>Everything should be good to go!</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rstudio.html" class="btn btn-neutral float-right" title="Installing RStudioServer on Ubuntu 15.04" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="handbook.html" class="btn btn-neutral" title="BDEEP Infrastructure Handbook" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, BDEEP.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
